@@ -20,7 +20,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: default
-  namespace: pacman-helm-development
+  namespace: pacman-helm-dev-2
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
