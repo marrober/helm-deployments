@@ -9,7 +9,7 @@ spec:
     namespace: pacman-helm-development-01
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/marrober/helm-charts.git
+    repoURL: https://github.com/marrober/helm-deployments.git
     path: pacman-01/deployment/01-dev
     targetRevision: main
   syncPolicy:

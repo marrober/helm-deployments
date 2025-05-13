@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     path: pacman-01
-    repoURL: https://github.com/marrober/helm-charts.git
+    repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
   project: helm-argo-1
   syncPolicy:
