@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: helm-argo-1
+  namespace: openshift-gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Project to show how Argo and Tekton can be used together
+  sourceRepos:
+  - https://github.com/marrober/helm*
+
+  destinations:
+  - server: https://kubernetes.default.svc
+    namespace: '*'
+
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRole
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRoleBinding
+
+  namespaceResourceBlacklist:
+  namespaceResourceWhitelist:
+  orphanedResources:
+    warn: false
+  roles:

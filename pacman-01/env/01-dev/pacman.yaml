@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pacman-helm-development
+  namespace: openshift-gitops
+spec:
+  project: helm-argo-1
+  destination:
+    namespace: pacman-helm-development-01
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/marrober/helm-charts.git
+    path: pacman-01/deployment/01-dev
+    targetRevision: main
+  syncPolicy:
+    automated: 
+      prune: true 
+      selfHeal: true 
+      allowEmpty: false 
+    syncOptions: 
+      - Validate=true 
+      - CreateNamespace=true 
+      - PrunePropagationPolicy=foreground 
+      - PruneLast=true 
+    retry:
+      limit: 1 
+      backoff:
+        duration: 5s 
+        factor: 2 
+        maxDuration: 20s 
