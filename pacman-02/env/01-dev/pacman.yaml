@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pacman-helm-development-2
+  name: pacman-helm-dev-2
   namespace: openshift-gitops
 spec:
   project: pacman-02
   destination:
-    namespace: pacman-helm-development-2
+    namespace: pacman-helm-dev-2
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/marrober/helm-deployments.git
