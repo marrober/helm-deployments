@@ -8,7 +8,7 @@ metadata:
 spec:
   description: Project to show how Argo and Tekton can be used together
   sourceRepos:
-  - https://github.com/marrober/helm-deployments/
+  - https://github.com/marrober/helm-deployments.git
   - https://marrober.github.io/helm-charts/
 
   destinations:
