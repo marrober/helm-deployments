@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: helm-argo-1
+  name: helm-argo-proj-1
   namespace: openshift-gitops
   finalizers:
     - resources-finalizer.argocd.argoproj.io

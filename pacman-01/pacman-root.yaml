@@ -11,7 +11,7 @@ spec:
     path: pacman-01
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
-  project: helm-argo-1
+  project: helm-argo-proj-1
   syncPolicy:
     automated:
       prune: true
