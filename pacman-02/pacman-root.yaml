@@ -5,7 +5,7 @@ metadata:
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: pacman-helm-dev-02
+    namespace: helm-argo-proj-2-dev-01
     server: https://kubernetes.default.svc
   source:
     path: pacman-02
