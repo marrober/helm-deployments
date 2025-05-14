@@ -2,7 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: argocd-admin
-  namespace: pacman-helm-dev-2
+  namespace: helm-argo-proj-2-dev-01
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -20,7 +20,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: default
-  namespace: pacman-helm-dev-2
+  namespace: helm-argo-proj-2-dev-01
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
