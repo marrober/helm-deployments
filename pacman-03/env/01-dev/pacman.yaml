@@ -1,21 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pacman-helm-dev-2
+  name: helm-argo-proj-3-dev-01
   namespace: openshift-gitops
 spec:
-  project: pacman-02
+  project: helm-argo-proj-3
   destination:
-    namespace: pacman-helm-dev-2
+    namespace: helm-argo-proj-3-dev-01
     server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/marrober/helm-deployments.git
-    path: pacman-02/deployment/01-dev
-    targetRevision: main
-    helm:
-      releaseName: pacman-helm-dev
-      valueFiles:
-        - values.yaml
+  sources:
+    - repoURL: https://marrober.github.io/helm-charts/
+      chart: pacman
+      targetRevision: 0.1.9
+      helm:
+        releaseName: pacman-helm-dev
+        valueFiles:
+          - $values/Apacman-03/deployment/01-dev/values.yaml
+#          - $values/ArgoCD-3/deployment/apps/values-2.yaml
+    - repoURL: https://github.com/marrober/helm-deployments.git
+      targetRevision: main
+      ref: values
   syncPolicy:
     automated: 
       prune: true 
