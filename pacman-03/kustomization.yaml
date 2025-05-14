@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - argo-project.yaml
 - pacman-root.yaml
-#- env/01-dev/
+- env/01-dev/

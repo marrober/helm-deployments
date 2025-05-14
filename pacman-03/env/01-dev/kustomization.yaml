@@ -2,6 +2,5 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- argo-project.yaml
-- pacman-root.yaml
-#- env/01-dev/
+- pacman.yaml
+- gitops-sa-rolebinding.yaml
