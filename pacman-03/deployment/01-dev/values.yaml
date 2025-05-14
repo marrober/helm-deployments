@@ -11,7 +11,7 @@ pacman:
 
   clusterAPI: apps.cluster-v8vmm.v8vmm.sandbox1487.opentlc.com
 
-  replicaCount: 4
+  replicaCount: 7
 
   imageRepositoryName: image-registry.openshift-image-registry.svc:5000/pacman-ci/pacman
   imageRepositoryTag: 7j7nw
