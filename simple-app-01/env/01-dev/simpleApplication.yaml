@@ -12,10 +12,8 @@ spec:
     - repoURL: https://marrober.github.io/helm-charts/
       chart: simple-app
       targetRevision: 0.1
-      helm:
-        releaseName: simple-01
-        valueFiles:
-          - $values/simple-app-01/deployment/01-dev/appValues.yaml
+
+
     - repoURL: https://marrober.github.io/helm-charts/
       chart: applicationSet
       targetRevision: 0.1
