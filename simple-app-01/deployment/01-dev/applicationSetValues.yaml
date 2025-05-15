@@ -1,0 +1,37 @@
+applicationSet:
+  # Default values for pacman.
+  # This is a YAML-formatted file.
+  # Declare variables to be passed into your templates.
+
+  name: simple-app-01-app-set
+  namespace: helm-argo-proj-3-dev-01
+
+  applicationFramework: nodejs
+  applicationFrameworkVersion: 16-ubi8
+
+  clusterAPI: apps.cluster-v8vmm.v8vmm.sandbox1487.opentlc.com
+
+  replicaCount: 3
+
+  imageRepositoryName: image-registry.openshift-image-registry.svc:5000/pacman-ci/pacman
+  imageRepositoryTag: 7j7nw
+  imageRepositoryPullPolicy: IfNotPresent
+  
+
+  imagePullSecrets: []
+  nameOverride: ""
+  fullnameOverride: ""
+
+  podAnnotations: {}
+
+  securityContext: {}
+
+  serviceName: pacman
+  serviceType: ClusterIP
+  servicePort: 8080
+  servicePortName: 8080-tcp
+  serviceTargetPort: 8080
+  serviceWeight: 100
+  routeTermination: edge
+
+  autoscalingEnabled: false
