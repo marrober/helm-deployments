@@ -11,7 +11,7 @@ spec:
   sources:
     - repoURL: https://marrober.github.io/helm-charts/
       chart: pacman
-      targetRevision: 0.2.1
+      targetRevision: 0.19
       helm:
         releaseName: pacman-helm-dev
         valueFiles:
