@@ -16,7 +16,6 @@ spec:
         releaseName: pacman-helm-dev
         valueFiles:
           - $values/pacman-03/deployment/01-dev/values.yaml
-#          - $values/ArgoCD-3/deployment/apps/values-2.yaml
     - repoURL: https://github.com/marrober/helm-deployments.git
       targetRevision: main
       ref: values
