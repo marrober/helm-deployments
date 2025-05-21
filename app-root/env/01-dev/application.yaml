@@ -13,7 +13,7 @@ spec:
       chart: simple-app
 #        valueFiles:
 #          - $values/app-root/app-01/deployment/01-dev/appValues.yaml
-#      targetRevision: 0.1
+      targetRevision: 0.1
 #    - repoURL: https://marrober.github.io/helm-charts/
 #      chart: applicationSet
 #      targetRevision: 0.1

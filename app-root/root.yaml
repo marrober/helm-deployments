@@ -12,7 +12,7 @@ spec:
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
     directory:
-      recurse: true
+      recurse: false
   project: root
   syncPolicy:
     automated:
