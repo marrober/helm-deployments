@@ -11,9 +11,9 @@ spec:
     path: app-root/apps/app-01
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
-    directory:
-      recurse: true
-      include: 'application.yaml'
+#    directory:
+#      recurse: true
+#      include: 'application.yaml'
   project: app-01
   syncPolicy:
     automated:
