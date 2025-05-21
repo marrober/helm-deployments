@@ -43,7 +43,6 @@ spec:
     targetRevision: main
     directory:
       recurse: true
-      include: 'application.yaml'
   project: app-01
   syncPolicy:
     automated:
