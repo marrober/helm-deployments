@@ -8,12 +8,12 @@ spec:
   destination:
     namespace: app-01-dev-01
     server: https://kubernetes.default.svc
-  sources:
+  source:
     - repoURL: https://marrober.github.io/helm-charts/
       chart: simple-app
 #        valueFiles:
 #          - $values/app-root/app-01/deployment/01-dev/appValues.yaml
-      targetRevision: 0.1
+      targetRevision: "0.1"
 #    - repoURL: https://marrober.github.io/helm-charts/
 #      chart: applicationSet
 #      targetRevision: 0.1
