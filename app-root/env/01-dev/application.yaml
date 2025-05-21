@@ -11,19 +11,19 @@ spec:
   sources:
     - repoURL: https://marrober.github.io/helm-charts/
       chart: simple-app
-        valueFiles:
-          - $values/app-root/app-01/deployment/01-dev/appValues.yaml
-      targetRevision: 0.1
-    - repoURL: https://marrober.github.io/helm-charts/
-      chart: applicationSet
-      targetRevision: 0.1
-      helm:
-        releaseName: appSet-01
-        valueFiles:
-          - $values/app-root/app-01/deployment/01-dev/applicationSetValues.yaml
-    - repoURL: https://github.com/marrober/helm-deployments.git
-      targetRevision: main
-      ref: values
+#        valueFiles:
+#          - $values/app-root/app-01/deployment/01-dev/appValues.yaml
+#      targetRevision: 0.1
+#    - repoURL: https://marrober.github.io/helm-charts/
+#      chart: applicationSet
+#      targetRevision: 0.1
+#      helm:
+#        releaseName: appSet-01
+#        valueFiles:
+#          - $values/app-root/app-01/deployment/01-dev/applicationSetValues.yaml
+#    - repoURL: https://github.com/marrober/helm-deployments.git
+#      targetRevision: main
+#      ref: values
   syncPolicy:
     automated: 
       prune: true 
