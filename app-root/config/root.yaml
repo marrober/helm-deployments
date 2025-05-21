@@ -8,10 +8,10 @@ spec:
     namespace: argo-root
     server: https://kubernetes.default.svc
   sources:
-  - path: app-root
+  - path: app-root/config
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
-  - path: app-root
+  - path: app-root/apps
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
     directory:
