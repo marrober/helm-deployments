@@ -1,12 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: helm-argo-simple-app-01
+  name: root
   namespace: openshift-gitops
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  description: Project to show how Argo and Tekton can be used together
   sourceRepos:
   - https://github.com/marrober/helm-deployments.git
   - https://marrober.github.io/helm-charts/

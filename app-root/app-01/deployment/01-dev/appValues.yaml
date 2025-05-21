@@ -1,10 +1,10 @@
-applicationSet:
+pacman:
   # Default values for pacman.
   # This is a YAML-formatted file.
   # Declare variables to be passed into your templates.
 
-  name: simple-app-01-app-set
-  namespace: helm-argo-proj-3-dev-01
+  deploymentName: simple-app-01-dev
+  namespace: app-01-dev-01
 
   applicationFramework: nodejs
   applicationFrameworkVersion: 16-ubi8

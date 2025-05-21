@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: simple-app-root-01
+  name: app-01-root
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: helm-argo-simple-app-01-dev-01
+    namespace: app-01-dev-01
     server: https://kubernetes.default.svc
   source:
-    path: pacman-03
+    path: app-root/app-01
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
-  project: helm-argo-simple-app-01
+  project: app-01
   syncPolicy:
     automated:
       prune: true
