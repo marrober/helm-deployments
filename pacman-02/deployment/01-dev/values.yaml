@@ -9,12 +9,12 @@ pacman:
   applicationFramework: nodejs
   applicationFrameworkVersion: 16-ubi8
 
-  clusterAPI: apps.cluster-v8vmm.v8vmm.sandbox1487.opentlc.com
+  clusterAPI: apps.cluster-zh4z9.zh4z9.sandbox313.opentlc.com
 
   replicaCount: 5
 
-  imageRepositoryName: image-registry.openshift-image-registry.svc:5000/pacman-ci/pacman
-  imageRepositoryTag: 7j7nw
+  imageRepositoryName: quay.io/marrober/pacman
+  imageRepositoryTag: g3a59
   imageRepositoryPullPolicy: IfNotPresent
   
 
