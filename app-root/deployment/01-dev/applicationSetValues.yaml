@@ -1,0 +1,7 @@
+applicationSet:
+  # Default values for pacman.
+  # This is a YAML-formatted file.
+  # Declare variables to be passed into your templates.
+
+  name: app-01-app-set
+  namespace: app-01-dev-01
