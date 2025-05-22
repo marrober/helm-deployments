@@ -41,6 +41,7 @@ spec:
     targetRevision: main
     directory:
       recurse: true
+      include: 'argo-project.yaml'
   project: app-01
   syncPolicy:
     automated:
