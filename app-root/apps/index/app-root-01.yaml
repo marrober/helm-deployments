@@ -3,8 +3,6 @@ kind: AppProject
 metadata:
   name: app-01
   namespace: openshift-gitops
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   sourceRepos:
   - https://github.com/marrober/helm-deployments.git
