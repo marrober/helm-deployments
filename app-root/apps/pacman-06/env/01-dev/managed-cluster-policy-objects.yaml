@@ -97,13 +97,13 @@ spec:
   predicates:
   - requiredClusterSelector:
     labelSelector:
-    matchExpressions:
+      matchExpressions:
       - {key: name, operator: In, values: ["local-cluster"]}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata: 
-  name: acman-app-06-dev-01-mcsb-binding
+  name: pacman-app-06-dev-01-mcsb-binding
   namespace: pacman-app-06-dev-01
 placementRef:
   name: pacman-app-06-dev-01-mcsb-placement
