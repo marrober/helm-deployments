@@ -2,8 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: pacman-app-06-dev-01
-  annotations:
-    argocd.argoproj.io/sync-wave: "3"
   namespace: openshift-gitops
 spec:
   generators:

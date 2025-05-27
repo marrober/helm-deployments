@@ -3,8 +3,6 @@ kind: Placement
 metadata:
   name: pacman-app-06-dev-01-placement
   namespace: openshift-gitops
-  annotations:
-    argocd.argoproj.io/sync-wave: "5"
 spec:
   clusterSets:
     - dev-clusters

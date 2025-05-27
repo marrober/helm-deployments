@@ -3,7 +3,5 @@ kind: ManagedClusterSetBinding
 metadata:
   name: dev-clusters
   namespace: pacman-app-06-dev-01
-  annotations:
-    argocd.argoproj.io/sync-wave: "4"
 spec:
   clusterSet: dev-clusters
