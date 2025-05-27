@@ -14,6 +14,22 @@ subjects:
   name: openshift-gitops-argocd-application-controller
   namespace: openshift-gitops
 ---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: managed-clusterset-bind
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  namespace: pacman-app-06-dev-01
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: open-cluster-management:managedclusterset:bind:default
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops
+---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
