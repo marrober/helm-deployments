@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: pacman-app-02-dev-01
+  name: pacman-app-02
   namespace: openshift-gitops
 spec:
   description: Project to show how Argo and Tekton can be used together
