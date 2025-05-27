@@ -4,4 +4,6 @@ kind: Kustomization
 resources:
 - managed-clusterset-binding-dev-clusters.yaml
 - managed-clusterset-binding-prod-clusters.yaml  
-- 01-gitops-operator/policy-openshift-gitops.yaml
+- policy-openshift-gitops.yaml
+- ocm-placement-consumer-role.yaml
+- ocm-placement-generator-cm.yaml
