@@ -11,7 +11,7 @@ spec:
   - https://marrober.github.io/helm-charts/
 
   destinations:
-  - server: https://kubernetes.default.svc
+  - server: '*'
     namespace: '*'
 
   clusterResourceWhitelist:
