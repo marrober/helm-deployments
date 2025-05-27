@@ -15,7 +15,7 @@ spec:
     helm:
       releaseName: pacman-helm-dev
       valueFiles:
-        - values.yaml
+      - values.yaml
   syncPolicy:
     automated: 
       prune: true 

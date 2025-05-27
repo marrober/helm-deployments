@@ -25,13 +25,13 @@ spec:
         server: '{{server}}'
       project: app-1
       source:
-    repoURL: https://github.com/marrober/helm-deployments.git
-    path: app-root/apps/pacman-06/deployment/01-dev
-    targetRevision: main
-    helm:
-      releaseName: pacman-helm-dev
-      valueFiles:
-        - values.yaml
+        repoURL: https://github.com/marrober/helm-deployments.git
+        path: app-root/apps/pacman-06/deployment/01-dev
+        targetRevision: main
+        helm:
+          releaseName: pacman-helm-dev
+          valueFiles:
+          - values.yaml
       syncPolicy:
         automated: {}
         syncOptions:
