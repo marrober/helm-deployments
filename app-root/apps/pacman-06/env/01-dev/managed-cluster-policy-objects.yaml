@@ -52,8 +52,8 @@ metadata:
 placementRef:
   name: pacman-app-06-dev-01-mco-placement
   kind: Placement
-  apiGroup: cluster.open-cluster-management.io/v1beta1
+  apiGroup: cluster.open-cluster-management.io
 subjects:
 - name: pacman-app-06-dev-01-mco
   kind: policy
-  apiGroup: policy.open-cluster-management.io/v1
+  apiGroup: policy.open-cluster-management.io
