@@ -37,26 +37,23 @@ spec:
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: gitops-cluster-placement
+  name: placement-gitops-cluster
   namespace: rhacm-policies
 spec:
   clusterConditions:
-  - type: ManagedClusterConditionAvailable
-    status: "True"
+    - status: "True"
+      type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
-      - key: name
-        operator: In
-        values:
-        - "local-cluster"
+      - {key: name, operator: In, values: ["local-cluster"]}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata: 
-  name: gitops-cluster-binding
+  name: binding-gitops-cluster
   namespace: rhacm-policies
 placementRef:
-  name: gitops-cluster-placement
+  name: placement-gitops-cluster
   kind: Placement
   apiGroup: cluster.open-cluster-management.io
 subjects:
