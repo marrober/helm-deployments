@@ -36,15 +36,6 @@ spec:
                     operator: Exists
                   clusterSets:
                     - dev-clusters
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: cluster.open-cluster-management.io/v1beta2
-                kind: ManagedClusterSetBinding
-                metadata:
-                  name: dev-clusters
-                  namespace: openshift-gitops
-                spec:
-                  clusterSet: dev-clusters
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
