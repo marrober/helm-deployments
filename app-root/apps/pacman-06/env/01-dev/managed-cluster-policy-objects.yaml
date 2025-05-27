@@ -55,5 +55,5 @@ placementRef:
   apiGroup: cluster.open-cluster-management.io
 subjects:
 - name: pacman-app-06-dev-01-mco
-  kind: policy
+  kind: Policy
   apiGroup: policy.open-cluster-management.io
