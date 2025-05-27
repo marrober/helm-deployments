@@ -33,22 +33,6 @@ spec:
                     apiVersion: cluster.open-cluster-management.io/v1beta1
                     name: dev-clusters
                     namespace: openshift-gitops
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: apps.open-cluster-management.io/v1beta1
-                kind: GitOpsCluster
-                metadata:
-                  name: argo-acm-clusters-prod-clusters
-                  namespace: openshift-gitops
-                spec:
-                  argoServer:
-                    cluster: local-cluster
-                    argoNamespace: openshift-gitops
-                  placementRef:
-                    kind: Placement
-                    apiVersion: cluster.open-cluster-management.io/v1beta1
-                    name: prod-clusters
-                    namespace: openshift-gitops
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
