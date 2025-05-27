@@ -34,6 +34,20 @@ spec:
                     name: dev-clusters
                     namespace: openshift-gitops
 ---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-gitops-cluster
+  namespace: rhacm-policies
+placementRef:
+  name: placement-gitops-cluster
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: gitops-cluster
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
+---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
@@ -46,17 +60,3 @@ spec:
   clusterSelector:
     matchExpressions:
       - {key: name, operator: In, values: ["local-cluster"]}
----
-apiVersion: policy.open-cluster-management.io/v1
-kind: PlacementBinding
-metadata: 
-  name: binding-gitops-cluster
-  namespace: rhacm-policies
-placementRef:
-  name: placement-gitops-cluster
-  kind: Placement
-  apiGroup: cluster.open-cluster-management.io
-subjects:
-- name: gitops-cluster
-  kind: Policy
-  apiGroup: policy.open-cluster-management.io
