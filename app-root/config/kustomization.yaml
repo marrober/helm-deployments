@@ -6,4 +6,3 @@ resources:
 - argo-project.yaml
 - root.yaml
 - apps.yaml
-- policies/hub-cluster-config/01-gitops-operator/policy-openshift-gitops.yaml
