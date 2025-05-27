@@ -1,0 +1,35 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: pacman-app-06-dev-01-managed-cluster-objects
+  labels:
+    policy: pacman-app-06-dev-01-managed-cluster-objects
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: pacman-app-06-dev-01-project
+        spec:
+          severity: medium
+          remediationAction: enforce
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: argoproj.io/v1alpha1
+                kind: AppProject
+                metadata:
+                  name: pacman-app-06
+                  namespace: openshift-gitops
+                spec:
+                  clusterResourceWhitelist:
+                  - group: '*'
+                    kind: '*'
+                  destinations:
+                  - namespace: '*'
+                    server: '*'
+                  sourceRepos:
+                  - '*'
