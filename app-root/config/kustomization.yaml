@@ -6,3 +6,4 @@ resources:
 - argo-project.yaml
 - root.yaml
 - apps.yaml
+- config/policies/hub-cluster-config/02-gitops-cluster/gitops-cluster.yaml
