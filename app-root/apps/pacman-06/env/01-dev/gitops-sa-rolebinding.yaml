@@ -2,6 +2,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: argocd-admin
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
   namespace: pacman-app-06-dev-01
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -15,6 +17,8 @@ subjects:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   name: pull-image-from-pacman-ci-pacman-06-dev-01
   namespace: pacman-ci
 subjects:
