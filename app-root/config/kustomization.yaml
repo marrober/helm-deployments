@@ -7,3 +7,4 @@ resources:
 - root.yaml
 - apps.yaml
 - policies/hub-cluster-config/02-gitops-cluster/gitops-cluster.yaml
+- policies/hub-cluster-config/03-admin-cluster-role/policy-admin-cluster-role.yaml 
