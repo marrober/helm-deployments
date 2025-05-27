@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: app-01
+  name: pacman-app-02
   namespace: openshift-gitops
 spec:
   sourceRepos:
@@ -33,7 +33,7 @@ metadata:
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: app-01-dev-01
+    namespace: argo-root
     server: https://kubernetes.default.svc
   source:
     path: app-root/apps/pacman-02
@@ -41,7 +41,7 @@ spec:
     targetRevision: main
     directory:
       recurse: true
-  project: app-01
+  project: pacman-app-02
   syncPolicy:
     automated:
       prune: true
