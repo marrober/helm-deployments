@@ -48,6 +48,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata: 
   name: pacman-app-06-dev-01-mco-binding
+  namespace: pacman-app-06-dev-01
 placementRef:
   name: pacman-app-06-dev-01-mco-placement
   kind: Placement
