@@ -18,12 +18,12 @@ spec:
         argocd.argoproj.io/skip-reconcile: "true" 
       labels:
         apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
-      name: '{{name}}'
+      name: pacman-app-06-dev-01
     spec:
       destination:
         namespace: pacman-app-06-dev-01
         server: '{{server}}'
-      project: app-1
+      project: pacman-app-06
       source:
         repoURL: https://github.com/marrober/helm-deployments.git
         path: app-root/apps/pacman-06/deployment/01-dev
