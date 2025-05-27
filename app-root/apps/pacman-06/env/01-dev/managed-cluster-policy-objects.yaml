@@ -1,7 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: pacman-app-06-dev-01-managed-cluster-objects
+  name: pacman-app-06-dev-01-mco
   namespace: pacman-app-06-dev-01
   labels:
     policy: pacman-app-06-dev-01-managed-cluster-objects
