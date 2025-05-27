@@ -1,9 +1,0 @@
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: bind-to-clusterset-dev-clusters
-rules:
-  - apiGroups: ["cluster.open-cluster-management.io"]
-    resources: ["managedclustersets/bind"]
-    resourceNames: ["dev-clusters"]
-    verbs: ["create"]
