@@ -1,0 +1,61 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: pacman-app-08-test
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  namespace: openshift-gitops
+spec:
+  sourceRepos:
+  - https://github.com/marrober/helm-deployments.git
+  - https://marrober.github.io/helm-charts/
+
+  destinations:
+  - server: '*'
+    namespace: '*'
+
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRole
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRoleBinding
+
+  namespaceResourceBlacklist:
+  namespaceResourceWhitelist:
+  orphanedResources:
+    warn: false
+  roles:
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pacman-08-root
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  destination:
+    namespace: argo-root
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/marrober/helm-deployments.git
+    path: app-root/apps/pacman-08-test
+    targetRevision: main
+  project: pacman-app-08-test
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:  
+    - Validate=true 
+    - CreateNamespace=true 
+    - PrunePropagationPolicy=foreground 
+    - PruneLast=true 
+    retry:
+      limit: 1 
+      backoff:
+        duration: 5s 
+        factor: 2 
+        maxDuration: 20s
