@@ -1,7 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: managed-cluster-roles
+  name: managed-cluster-role
   namespace: rhacm-policies
   annotations:
     policy.open-cluster-management.io/standards: NIST SP 800-53
@@ -15,7 +15,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: managed-cluster-roles
+          name: managed-cluster-role
         spec:
           remediationAction: enforce
           severity: medium
@@ -48,23 +48,26 @@ spec:
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: binding-managed-cluster-roles
+  name: binding-managed-cluster-role
   namespace: rhacm-policies
 placementRef:
-  name: placement-managed-cluster-roles
+  name: placement-managed-cluster-role
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-  - name: managed-cluster-roles
+  - name: managed-cluster-role
     kind: Policy
     apiGroup: policy.open-cluster-management.io
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: placement-managed-cluster-roles
-  namespace: openshift-gitops
+  name: placement-managed-cluster-role
+  namespace: rhacm-policies
 spec:
+  clusterConditions:
+    - status: "True"
+      type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
       - {key: managed-cluster, operator: In, values: ["yes"]}
