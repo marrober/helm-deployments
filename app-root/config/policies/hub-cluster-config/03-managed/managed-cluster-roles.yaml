@@ -53,7 +53,7 @@ metadata:
   namespace: rhacm-policies
 placementRef:
   name: placement-managed-cluster-roles
-  kind: Placement
+  kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
   - name: managed-cluster-roles
@@ -61,10 +61,17 @@ subjects:
     apiGroup: policy.open-cluster-management.io
 ---
 apiVersion: cluster.open-cluster-management.io/v1beta1
-kind: Placement
+kind: PlacementRule
 metadata:
   name: placement-managed-cluster-roles
   namespace: openshift-gitops
 spec:
-  clusterSets:
-    - dev-clusters
+  clusterConditions:
+  - type: ManagedClusterConditionAvailable
+    status: "True"
+  clusterSelector:
+    matchExpressions:
+      - key: name
+        operator: Not
+        values:
+        - "local-cluster"
