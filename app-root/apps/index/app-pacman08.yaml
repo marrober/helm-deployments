@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: pacman-app-06
+  name: pacman-app-08
   annotations:
     argocd.argoproj.io/sync-wave: "1"
   namespace: openshift-gitops
@@ -31,7 +31,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pacman-06-root
+  name: pacman-08-root
   namespace: openshift-gitops
   annotations:
     argocd.argoproj.io/sync-wave: "2"
@@ -40,12 +40,12 @@ spec:
     namespace: argo-root
     server: https://kubernetes.default.svc
   source:
-    path: app-root/apps/pacman-06
+    path: app-root/apps/pacman-08
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
     directory:
       recurse: true
-  project: pacman-app-06
+  project: pacman-app-08
   syncPolicy:
     automated:
       prune: true
