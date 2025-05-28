@@ -72,6 +72,6 @@ spec:
   clusterSelector:
     matchExpressions:
       - key: name
-        operator: Not
+        operator: Notin
         values:
         - "local-cluster"
