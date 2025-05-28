@@ -26,7 +26,7 @@ roleRef:
   kind: ClusterRole
   name: 'system:image-puller'
 ---
-kind: RoleBinding
+kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: gitops-create-managed-clusterset-binding
