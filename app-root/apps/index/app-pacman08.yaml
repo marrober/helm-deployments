@@ -111,7 +111,7 @@ metadata:
 placementRef:
   name: pacman-app-08-project-placement
   kind: Placement
-  apiGroup: cluster.open-cluster-management.io
+  apiGroup: apps.open-cluster-management.io/v1
 subjects:
 - name: pacman-app-08-project
   kind: Policy
