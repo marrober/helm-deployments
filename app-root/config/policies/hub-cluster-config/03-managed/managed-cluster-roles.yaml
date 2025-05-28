@@ -67,4 +67,4 @@ metadata:
 spec:
   clusterSelector:
     matchExpressions:
-      - {key: name, operator: NotIn, values: ["local-cluster"]}
+      - {key: managed-cluster, operator: In, values: ["yes"]}
