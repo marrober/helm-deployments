@@ -16,7 +16,6 @@ spec:
         kind: ConfigurationPolicy
         metadata:
           name: admin-cluster-role
-          namespace: rhacm-policies
         spec:
           remediationAction: enforce
           severity: medium
