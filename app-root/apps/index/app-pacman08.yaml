@@ -44,7 +44,7 @@ spec:
     path: app-root/apps/pacman-08/env/01-dev
     targetRevision: main
     helm:
-      releaseName: pacman-helm-dev
+      releaseName: pacman-08-dev-01
       valueFiles:
       - values.yaml
   project: pacman-app-08
