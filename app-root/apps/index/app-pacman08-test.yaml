@@ -31,7 +31,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pacman-08-root
+  name: pacman-08-root-test
   namespace: openshift-gitops
   annotations:
     argocd.argoproj.io/sync-wave: "2"
