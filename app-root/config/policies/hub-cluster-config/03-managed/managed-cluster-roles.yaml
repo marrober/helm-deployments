@@ -65,12 +65,6 @@ metadata:
   name: placement-managed-cluster-roles
   namespace: openshift-gitops
 spec:
-  clusterConditions:
-  - type: ManagedClusterConditionAvailable
-    status: "True"
   clusterSelector:
     matchExpressions:
-      - key: name
-        operator: NotIn
-        values:
-        - "local-cluster"
+      - {key: name, operator: NotIn, values: ["local-cluster"]}
