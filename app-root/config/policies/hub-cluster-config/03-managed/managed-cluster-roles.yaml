@@ -1,8 +1,26 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: gitops-create-managed-clusterset-binding
+  namespace: rhacm-policies
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+subjects:
+  - kind: ServiceAccount
+    name: openshift-gitops-argocd-application-controller
+    namespace: openshift-gitops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: open-cluster-management:managedclusterset:bind:dev-clusters
+---
 apiVersion: cluster.open-cluster-management.io/v1beta2
 kind: ManagedClusterSetBinding
 metadata:
   name: dev-clusters
   namespace: rhacm-policies
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   clusterSet: dev-clusters
 ---
