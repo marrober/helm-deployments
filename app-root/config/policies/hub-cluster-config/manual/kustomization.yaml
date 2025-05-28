@@ -7,3 +7,4 @@ resources:
 - policy-openshift-gitops.yaml
 - ocm-placement-consumer-role.yaml
 - ocm-placement-generator-cm.yaml
+- enable-clusterset-binding-to-rhacm-policies.yaml
