@@ -89,7 +89,7 @@ spec:
           sourceRepos:
           - '*'
 ---
-apiVersion: cluster.open-cluster-management.io/v1beta1
+apiVersion: cluster.open-cluster-management.io
 kind: Placement
 metadata:
   name: pacman-app-08-project-placement
@@ -111,7 +111,7 @@ metadata:
 placementRef:
   name: pacman-app-08-project-placement
   kind: Placement
-  apiGroup: cluster.open-cluster-management.io/v1beta1
+  apiGroup: cluster.open-cluster-management.io
 subjects:
 - name: pacman-app-08-project
   kind: Policy
