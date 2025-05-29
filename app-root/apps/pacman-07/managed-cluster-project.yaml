@@ -1,0 +1,56 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: pacman-app-07-project
+  namespace: rhacm-policies
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: pacman-app-07-project
+        spec:
+          severity: medium
+          remediationAction: enforce
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: argoproj.io/v1alpha1
+                kind: AppProject
+                metadata:
+                  name: pacman-app-07
+                  namespace: openshift-gitops
+                spec:
+                  description: Project to show how Argo and Tekton can be used together
+                  sourceRepos:
+                  - https://github.com/marrober/helm*
+
+                  destinations:
+                  - server: https://kubernetes.default.svc
+                    namespace: '*'
+
+                  clusterResourceWhitelist:
+                  - group: ''
+                    kind: Namespace
+                  - group: 'rbac.authorization.k8s.io'
+                    kind: ClusterRole
+                  - group: 'rbac.authorization.k8s.io'
+                    kind: ClusterRoleBinding
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: pacman-app-07-project-binding
+  namespace: rhacm-policies
+placementRef:
+  name: dev-clusters-placement-rule
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: pacman-app-07-project
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
