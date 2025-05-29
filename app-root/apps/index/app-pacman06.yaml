@@ -43,7 +43,7 @@ spec:
     path: app-root/apps/pacman-06
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
-    include: '*/envmmmm/*'
+    include: '*/env/*'
   project: pacman-app-06
   syncPolicy:
     automated:
