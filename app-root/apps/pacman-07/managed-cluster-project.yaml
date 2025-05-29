@@ -12,7 +12,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: gitops-cluster
+          name: pacman-app-07-project
         spec:
           severity: medium
           remediationAction: enforce
