@@ -12,7 +12,6 @@ spec:
         kind: ConfigurationPolicy
         metadata:
           name: rhacm-namespace-policies
-          namespace: rhacm-policies
         spec:
           remediationAction: enforce
           severity: medium
