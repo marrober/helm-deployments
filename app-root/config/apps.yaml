@@ -15,7 +15,7 @@ spec:
     targetRevision: main
     directory: 
       recurse: true
-      include: 'root-app.yaml'
+      include: 'root/*'
   project: root
   syncPolicy:
     automated:
