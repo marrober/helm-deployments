@@ -1,0 +1,11 @@
+name: pacman-app-08
+environmentName: dev-01
+
+configRepositoryURL: https://github.com/marrober/helm-deployments.git
+configRepositoryRevision: main
+configRepositoryPath: app-root/apps/pacman-08/deployment/02-dev
+
+helmReleaseName: pacman-app-08-dev-02
+valuesFileName: values.yaml
+
+targetClusterSet: dev-clusters
