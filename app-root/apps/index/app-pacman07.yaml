@@ -1,33 +1,33 @@
-apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: pacman-app-07
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
-  namespace: openshift-gitops
-spec:
-  sourceRepos:
-  - https://github.com/marrober/helm-deployments.git
-  - https://marrober.github.io/helm-charts/
+#apiVersion: argoproj.io/v1alpha1
+#kind: AppProject
+#metadata:
+#  name: pacman-app-07
+#  annotations:
+#    argocd.argoproj.io/sync-wave: "1"
+#  namespace: openshift-gitops
+#spec:
+#  sourceRepos:
+#  - https://github.com/marrober/helm-deployments.git
+#  - https://marrober.github.io/helm-charts/
 
-  destinations:
-  - server: '*'
-    namespace: '*'
+#  destinations:
+#  - server: '*'
+#    namespace: '*'
 
-  clusterResourceWhitelist:
-  - group: ''
-    kind: Namespace
-  - group: 'rbac.authorization.k8s.io'
-    kind: ClusterRole
-  - group: 'rbac.authorization.k8s.io'
-    kind: ClusterRoleBinding
+#  clusterResourceWhitelist:
+#  - group: ''
+#    kind: Namespace
+#  - group: 'rbac.authorization.k8s.io'
+#    kind: ClusterRole
+#  - group: 'rbac.authorization.k8s.io'
+#    kind: ClusterRoleBinding
 
-  namespaceResourceBlacklist:
-  namespaceResourceWhitelist:
-  orphanedResources:
-    warn: false
-  roles:
----
+#  namespaceResourceBlacklist:
+#  namespaceResourceWhitelist:
+#  orphanedResources:
+#    warn: false
+#  roles:
+#---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
