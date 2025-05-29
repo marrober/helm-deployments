@@ -74,20 +74,30 @@ spec:
   disabled: false
   policy-templates:
     - objectDefinition:
-        apiVersion: argoproj.io/v1alpha1
-        kind: AppProject
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
         metadata:
-          name: pacman-app-08
-          namespace: openshift-gitops
+          name: gitops-cluster
         spec:
-          clusterResourceWhitelist:
-          - group: '*'
-            kind: '*'
-          destinations:
-          - namespace: '*'
-            server: '*'
-          sourceRepos:
-          - '*'
+          severity: medium
+          remediationAction: enforce
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: argoproj.io/v1alpha1
+                kind: AppProject
+                metadata:
+                  name: pacman-app-08
+                  namespace: openshift-gitops
+                spec:
+                  clusterResourceWhitelist:
+                  - group: '*'
+                    kind: '*'
+                  destinations:
+                  - namespace: '*'
+                    server: '*'
+                  sourceRepos:
+                  - '*'
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
