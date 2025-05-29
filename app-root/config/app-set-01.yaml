@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apps
+  name: app-set-01
   annotations:
     argocd.argoproj.io/sync-wave: "3"
   namespace: openshift-gitops
