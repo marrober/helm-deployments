@@ -45,7 +45,7 @@ spec:
     targetRevision: main
     directory: 
       recursive: true
-      include: '*/applicationSet.yaml'
+      include: 'applicationSet.yaml'
   project: pacman-app-07
   syncPolicy:
     automated:
