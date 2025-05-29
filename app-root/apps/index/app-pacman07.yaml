@@ -45,7 +45,7 @@ spec:
     targetRevision: main
     directory: 
       recursive: true
-      include: 'clusterset-binding.yaml'
+      include: '{namespace.yaml, clusterset-binding.yaml, gitops-sa-rolebinding.yaml, applicationSet.yaml}'
   project: pacman-app-07
   syncPolicy:
     automated:
