@@ -1,8 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: pacman-app-07
+  name: pacman-app-02
   namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   sourceRepos:
   - https://github.com/marrober/helm*
@@ -18,24 +20,23 @@ spec:
     kind: ClusterRole
   - group: 'rbac.authorization.k8s.io'
     kind: ClusterRoleBinding
-#---
+---
 #apiVersion: argoproj.io/v1alpha1
 #kind: Application
 #metadata:
-#  name: pacman-07-root
+#  name: pacman-02-root
 #  namespace: openshift-gitops
+#  annotations:
+#    argocd.argoproj.io/sync-wave: "2"
 #spec:
 #  destination:
 #    namespace: argo-root
 #    server: https://kubernetes.default.svc
 #  source:
-#    path: app-root/apps/pacman-07
+#    path: app-root/apps/pacman-02
 #    repoURL: https://github.com/marrober/helm-deployments.git
 #    targetRevision: main
-#    directory: 
-#      recurse: true
-#      include: 'app-project.yaml'
-#  project: pacman-app-07
+#  project: pacman-app-02
 #  syncPolicy:
 #    automated:
 #      prune: true

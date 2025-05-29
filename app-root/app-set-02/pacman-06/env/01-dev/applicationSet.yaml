@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: pacman-app-06-dev-02
+  name: pacman-app-06-dev-01
   namespace: openshift-gitops
 spec:
   generators:
@@ -9,7 +9,7 @@ spec:
         configMapRef: ocm-placement-generator
         labelSelector:
           matchLabels:
-            cluster.open-cluster-management.io/placement: pacman-app-06-dev-02-placement
+            cluster.open-cluster-management.io/placement: pacman-app-06-dev-01-placement
   template:
     metadata:
       annotations:
@@ -18,15 +18,15 @@ spec:
         argocd.argoproj.io/skip-reconcile: "true" 
       labels:
         apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
-      name: pacman-app-06-dev-02
+      name: pacman-app-06-dev-01
     spec:
       destination:
-        namespace: pacman-app-06-dev-02
+        namespace: pacman-app-06-dev-01
         server: '{{server}}'
       project: pacman-app-06
       source:
         repoURL: https://github.com/marrober/helm-deployments.git
-        path: app-root/apps/pacman-06/deployment/02-dev
+        path: app-root/app-set-02/pacman-06/deployment/01-dev
         targetRevision: main
         helm:
           releaseName: pacman-helm-dev
