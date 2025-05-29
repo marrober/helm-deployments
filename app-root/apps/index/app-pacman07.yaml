@@ -44,7 +44,7 @@ spec:
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
     directory: 
-      recursive: true
+      recurse: true
   project: pacman-app-07
   syncPolicy:
     automated:
