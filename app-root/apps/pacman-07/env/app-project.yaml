@@ -18,36 +18,36 @@ spec:
     kind: ClusterRole
   - group: 'rbac.authorization.k8s.io'
     kind: ClusterRoleBinding
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: pacman-07-root
-  namespace: openshift-gitops
-spec:
-  destination:
-    namespace: argo-root
-    server: https://kubernetes.default.svc
-  source:
-    path: app-root/apps/pacman-07
-    repoURL: https://github.com/marrober/helm-deployments.git
-    targetRevision: main
-    directory: 
-      recurse: true
-      include: 'app-project.yaml'
-  project: pacman-app-07
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:  
-    - Validate=true 
-    - CreateNamespace=true 
-    - PrunePropagationPolicy=foreground 
-    - PruneLast=true 
-    retry:
-      limit: 1 
-      backoff:
-        duration: 5s 
-        factor: 2 
-        maxDuration: 20s
+#---
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: pacman-07-root
+#  namespace: openshift-gitops
+#spec:
+#  destination:
+#    namespace: argo-root
+#    server: https://kubernetes.default.svc
+#  source:
+#    path: app-root/apps/pacman-07
+#    repoURL: https://github.com/marrober/helm-deployments.git
+#    targetRevision: main
+#    directory: 
+#      recurse: true
+#      include: 'app-project.yaml'
+#  project: pacman-app-07
+#  syncPolicy:
+#    automated:
+#      prune: true
+#      selfHeal: true
+#    syncOptions:  
+#    - Validate=true 
+#    - CreateNamespace=true 
+#    - PrunePropagationPolicy=foreground 
+#    - PruneLast=true 
+#    retry:
+#      limit: 1 
+#      backoff:
+#        duration: 5s 
+#        factor: 2 
+#        maxDuration: 20s
