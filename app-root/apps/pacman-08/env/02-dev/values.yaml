@@ -1,5 +1,5 @@
 name: pacman-app-08
-environmentName: dev-01
+environmentName: dev-02
 
 configRepositoryURL: https://github.com/marrober/helm-deployments.git
 configRepositoryRevision: main
