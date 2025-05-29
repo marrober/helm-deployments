@@ -8,7 +8,7 @@ spec:
   - https://github.com/marrober/helm*
 
   destinations:
-  - server: https://kubernetes.default.svc
+  - server: '*'
     namespace: '*'
 
   clusterResourceWhitelist:
