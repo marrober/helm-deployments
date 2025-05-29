@@ -44,6 +44,7 @@ spec:
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
     directory: 
+      recursive: true
       include: '*/applicationSet.yaml'
   project: pacman-app-07
   syncPolicy:
