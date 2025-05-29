@@ -47,10 +47,22 @@ metadata:
   name: pacman-app-07-project-binding
   namespace: rhacm-policies
 placementRef:
-  name: dev-clusters-placement-rule
+  name: pacman-app-07-placement-rule
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
   - name: pacman-app-07-project
     kind: Policy
     apiGroup: policy.open-cluster-management.io
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: pacman-app-07-placement-rule
+  namespace: openshift-gitops
+spec:
+  clusterConditions:
+    - status: "True"
+      type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: managed-cluster, operator: In, values: ["yes"]}
