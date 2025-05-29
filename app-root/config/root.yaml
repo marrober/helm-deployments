@@ -14,8 +14,6 @@ spec:
     path: app-root/config
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
-#    directory:
-#      recurse: true
   project: root
   syncPolicy:
     automated:
