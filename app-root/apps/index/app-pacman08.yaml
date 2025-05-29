@@ -78,6 +78,7 @@ spec:
         kind: ConfigurationPolicy
         metadata:
           name: gitops-cluster
+          namespace: openshift-gitops
         spec:
           severity: medium
           remediationAction: enforce
