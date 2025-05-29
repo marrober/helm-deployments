@@ -39,8 +39,15 @@ spec:
   destination:
     namespace: argo-root
     server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/marrober/helm-deployments.git
+  sources:
+  - repoURL: https://github.com/marrober/helm-deployments.git
+    path: app-root/apps/pacman-08/env/01-dev
+    targetRevision: main
+    helm:
+      releaseName: pacman-08-dev-01
+      valueFiles:
+      - values.yaml
+  - repoURL: https://github.com/marrober/helm-deployments.git
     path: app-root/apps/pacman-08/env/01-dev
     targetRevision: main
     helm:
