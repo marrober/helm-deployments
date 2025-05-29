@@ -48,10 +48,10 @@ spec:
       valueFiles:
       - values.yaml
   - repoURL: https://github.com/marrober/helm-deployments.git
-    path: app-root/apps/pacman-08/env/01-dev
+    path: app-root/apps/pacman-08/env/02-dev
     targetRevision: main
     helm:
-      releaseName: pacman-08-dev-01
+      releaseName: pacman-08-dev-02
       valueFiles:
       - values.yaml
   project: pacman-app-08
