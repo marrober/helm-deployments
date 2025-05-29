@@ -45,7 +45,7 @@ spec:
     targetRevision: main
     directory:
       recurse: true
-    include: '*/env/*'
+    include: '*/env/01-dev/*'
   project: pacman-app-06
   syncPolicy:
     automated:
