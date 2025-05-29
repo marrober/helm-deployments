@@ -4,14 +4,14 @@ pacman:
   # Declare variables to be passed into your templates
 
   deploymentName: pacman
-  namespace: pacman-app-06-dev-02
+  namespace: pacman-app-07-dev-01
 
   applicationFramework: nodejs
   applicationFrameworkVersion: 16-ubi8
 
   clusterAPI: apps.cluster-r67x5.r67x5.sandbox1577.opentlc.com
 
-  replicaCount: 2
+  replicaCount: 4
 
   imageRepositoryName: quay.io/marrober/pacman
   imageRepositoryTag: g3a59
