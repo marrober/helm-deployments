@@ -13,6 +13,7 @@ spec:
         kind: ConfigurationPolicy
         metadata:
           name: pacman-app-07-project
+          namespace: rhacm-policies
         spec:
           severity: medium
           remediationAction: enforce
@@ -25,21 +26,14 @@ spec:
                   name: pacman-app-07
                   namespace: openshift-gitops
                 spec:
-                  description: Project to show how Argo and Tekton can be used together
-                  sourceRepos:
-                  - https://github.com/marrober/helm*
-
-                  destinations:
-                  - server: '*'
-                    namespace: '*'
-
                   clusterResourceWhitelist:
-                  - group: ''
-                    kind: Namespace
-                  - group: 'rbac.authorization.k8s.io'
-                    kind: ClusterRole
-                  - group: 'rbac.authorization.k8s.io'
-                    kind: ClusterRoleBinding
+                  - group: '*'
+                    kind: '*'
+                  destinations:
+                  - namespace: '*'
+                    server: '*'
+                  sourceRepos:
+                  - '*'
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
