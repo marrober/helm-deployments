@@ -1,7 +1,7 @@
 apiVersion: cluster.open-cluster-management.io/v1beta1
 kind: Placement
 metadata:
-  name: pacman-app-01-dev-01-placement
+  name: pacman-app-01-dev-02-placement
   namespace: openshift-gitops
 spec:
   clusterSets:
