@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-set-02
+  name: apps-02
   namespace: openshift-gitops
 spec:
   destination:
     namespace: argo-root
     server: https://kubernetes.default.svc
   source:
-    path: app-root/app-set-02
+    path: app-root/apps-02
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
     directory: 
