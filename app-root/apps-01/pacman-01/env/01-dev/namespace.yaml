@@ -3,4 +3,5 @@ kind: Namespace
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
+    applicationSetHubNamespace: "true"
   name: pacman-app-01-dev-01
