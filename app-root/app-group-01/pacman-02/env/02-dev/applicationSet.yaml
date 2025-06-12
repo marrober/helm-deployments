@@ -26,7 +26,7 @@ spec:
       project: pacman-app-02
       source:
         repoURL: https://github.com/marrober/helm-deployments.git
-        path: app-root/app-set-01/pacman-02/deployment/02-dev
+        path: app-root/app-group-01/pacman-02/deployment/02-dev
         targetRevision: main
         helm:
           releaseName: pacman-helm-dev
