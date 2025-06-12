@@ -18,7 +18,6 @@ spec:
           remediationAction: enforce
           object-templates-raw: |   
             {{- range $ns:= (lookup "v1" "Namespace" "" "" "applicationSetHubNamespace=true").items }}            
-              printf $ns.metadata.namespace
             - complianceType: musthave 
               objectDefinition:
                 apiVersion: cluster.open-cluster-management.io/v1beta2
