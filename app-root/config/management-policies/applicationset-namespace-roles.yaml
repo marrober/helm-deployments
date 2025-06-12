@@ -26,7 +26,7 @@ spec:
                   name: {{ $ns.metadata.annotations.targetClusterSet }}
                   namespace: {{ $ns.metadata.namespace }}
                 spec:
-                  clusterSet: dev-clusters
+                  clusterSet: {{ $ns.metadata.annotations.targetClusterSet }}
             - complianceType: musthave 
               objectDefinition:
                 apiVersion: rbac.authorization.k8s.io/v1
