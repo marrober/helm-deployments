@@ -40,7 +40,7 @@ metadata:
   name: binding-gitops-cluster
   namespace: rhacm-policies
 placementRef:
-  name: placement-local-cluster
+  name: openshift-clusters-placement-rule
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
