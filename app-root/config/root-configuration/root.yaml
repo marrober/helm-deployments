@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apps-01
+  name: root
   namespace: openshift-gitops
 spec:
   destination:
     namespace: argo-root
     server: https://kubernetes.default.svc
   source:
-    path: app-root/apps-01
+    path: app-root/config
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
     directory: 
@@ -18,14 +18,14 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-    - Validate=true
-    - CreateNamespace=true
-    - PrunePropagationPolicy=foreground
-    - PruneLast=true
+    syncOptions:  
+    - Validate=true 
+    - CreateNamespace=true 
+    - PrunePropagationPolicy=foreground 
+    - PruneLast=true 
     retry:
-      limit: 1
+      limit: 1 
       backoff:
-        duration: 5s
-        factor: 2
+        duration: 5s 
+        factor: 2 
         maxDuration: 20s

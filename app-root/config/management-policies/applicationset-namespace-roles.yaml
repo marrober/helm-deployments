@@ -18,6 +18,10 @@ spec:
           remediationAction: enforce
           object-templates-raw: |   
             {{- range $ns:= (lookup "v1" "Namespace" "" "" "applicationSetHubNamespace=true").items }}   
+            {{- range $appSet $as:= (lookup "argoproj.io/v1alpha1" "ApplicationSet" "openshift-gitops" {{ $ns.metadata.namespace }} "").items }}
+
+
+
             - complianceType: musthave 
               objectDefinition:
                 apiVersion: cluster.open-cluster-management.io/v1beta2
