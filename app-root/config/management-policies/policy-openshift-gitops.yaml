@@ -42,7 +42,7 @@ metadata:
   name: binding-policy-gitops-operator
   namespace: rhacm-policies
 placementRef:
-  name: placement-policy-gitops-operator
+  name: openshift-clusters-placement-rule
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:

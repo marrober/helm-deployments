@@ -1,7 +1,7 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: placement-policy-gitops-operator
+  name: openshift-clusters-placement-rule
   namespace: rhacm-policies
 spec:
   clusterConditions:
