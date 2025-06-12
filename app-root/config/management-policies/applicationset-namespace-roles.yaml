@@ -24,7 +24,7 @@ spec:
                 kind: ManagedClusterSetBinding
                 metadata:
                   name: {{ $ns.metadata.annotations.targetClusterSet }}
-                  namespace: {{ $ns.metadata.namespace }}
+                  namespace: {{ $ns.metadata.name }}
                 spec:
                   clusterSet: {{ $ns.metadata.annotations.targetClusterSet }}
             - complianceType: musthave 
@@ -33,7 +33,7 @@ spec:
                 kind: RoleBinding
                 metadata:
                   name: argocd-admin
-                  namespace: {{ $ns.metadata.namespace }}
+                  namespace: {{ $ns.metadata.name }}
                 roleRef:
                   apiGroup: rbac.authorization.k8s.io
                   kind: ClusterRole
@@ -47,8 +47,8 @@ spec:
                 kind: ClusterRoleBinding
                 apiVersion: rbac.authorization.k8s.io/v1
                 metadata:
-                  name: mcsb-{{ $ns.metadata.namespace }}
-                  namespace: {{ $ns.metadata.namespace }}
+                  name: mcsb-{{ $ns.metadata.name }}
+                  namespace: {{ $ns.metadata.name }}
                 subjects:
                   - kind: ServiceAccount
                     name: openshift-gitops-argocd-application-controller
