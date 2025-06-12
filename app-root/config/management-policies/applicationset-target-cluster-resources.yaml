@@ -2,7 +2,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: application-set-namespace-roles
+  name: application-set-rarget-resources
   namespace: rhacm-policies
 spec:
   remediationAction: enforce
@@ -12,21 +12,12 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: application-set-namespace-roles
+          name: application-set-rarget-resources
         spec:
           severity: medium
           remediationAction: enforce
           object-templates-raw: |   
             {{- range $ns:= (lookup "v1" "Namespace" "" "" "applicationSetHubNamespace=true").items }}            
-            - complianceType: musthave 
-              objectDefinition:
-                apiVersion: cluster.open-cluster-management.io/v1beta2
-                kind: ManagedClusterSetBinding
-                metadata:
-                  name: {{ $ns.metadata.annotations.targetClusterSet }}
-                  namespace: {{ $ns.metadata.name }}
-                spec:
-                  clusterSet: {{ $ns.metadata.annotations.targetClusterSet }}
             - complianceType: musthave 
               objectDefinition:
                 apiVersion: rbac.authorization.k8s.io/v1
@@ -42,40 +33,26 @@ spec:
                 - kind: ServiceAccount
                   name: openshift-gitops-argocd-application-controller
                   namespace: openshift-gitops
-            - complianceType: musthave 
-              objectDefinition:
-                kind: ClusterRoleBinding
-                apiVersion: rbac.authorization.k8s.io/v1
-                metadata:
-                  name: mcsb-{{ $ns.metadata.name }}
-                subjects:
-                  - kind: ServiceAccount
-                    name: openshift-gitops-argocd-application-controller
-                    namespace: openshift-gitops
-                roleRef:
-                  apiGroup: rbac.authorization.k8s.io
-                  kind: ClusterRole
-                  name: open-cluster-management:managedclusterset:bind:dev-clusters            
             {{- end }}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: application-set-namespace-roles-bindings
+  name: application-set-rarget-resources-bindings
   namespace: rhacm-policies
 placementRef:
-  name: application-set-namespace-roles-placement
+  name: application-set-rarget-resources-placement
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-  - name: application-set-namespace-roles
+  - name: application-set-rarget-resources
     kind: Policy
     apiGroup: policy.open-cluster-management.io
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: application-set-namespace-roles-placement
+  name: application-set-rarget-resources-placement
   namespace: rhacm-policies
 spec:
   clusterConditions:
@@ -83,4 +60,4 @@ spec:
       type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
-      - {key: local-cluster, operator: In, values: ["true"]}
+      - {key: local-cluster, operator: NotIn, values: ["true"]}
