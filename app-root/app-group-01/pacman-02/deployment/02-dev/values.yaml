@@ -9,7 +9,7 @@ pacman:
   applicationFramework: nodejs
   applicationFrameworkVersion: 16-ubi8
 
-  clusterAPI: apps.cluster-r67x5.r67x5.sandbox1577.opentlc.com
+  clusterAPI: apps.development.sandbox2161.opentlc.com
 
   replicaCount: 2
 
