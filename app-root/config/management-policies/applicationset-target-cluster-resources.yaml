@@ -2,7 +2,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: application-set-rarget-resources
+  name: application-set-target-resources
   namespace: rhacm-policies
 spec:
   remediationAction: enforce
@@ -12,7 +12,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: application-set-rarget-resources
+          name: application-set-target-resources
         spec:
           severity: medium
           remediationAction: enforce
@@ -38,21 +38,21 @@ spec:
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: application-set-rarget-resources-bindings
+  name: application-set-target-resources-bindings
   namespace: rhacm-policies
 placementRef:
-  name: application-set-rarget-resources-placement
+  name: application-set-target-resources-placement
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-  - name: application-set-rarget-resources
+  - name: application-set-target-resources
     kind: Policy
     apiGroup: policy.open-cluster-management.io
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: application-set-rarget-resources-placement
+  name: application-set-target-resources-placement
   namespace: rhacm-policies
 spec:
   clusterConditions:
