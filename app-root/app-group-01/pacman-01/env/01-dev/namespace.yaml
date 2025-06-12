@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  label: 
+  labels: 
     applicationSetHubNamespace: "true"
   annotations:
     argocd.argoproj.io/sync-wave: "1"
