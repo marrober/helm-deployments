@@ -66,23 +66,10 @@ metadata:
   name: binding-ocm-placement-resources
   namespace: rhacm-policies
 placementRef:
-  name: placement-ocm-placement-resources
+  name: placement-local-cluster
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
   - name: ocm-placement-resources
     kind: Policy
     apiGroup: policy.open-cluster-management.io
----
-apiVersion: apps.open-cluster-management.io/v1
-kind: PlacementRule
-metadata:
-  name: placement-ocm-placement-resources
-  namespace: rhacm-policies
-spec:
-  clusterConditions:
-    - status: "True"
-      type: ManagedClusterConditionAvailable
-  clusterSelector:
-    matchExpressions:
-      - {key: local-cluster, operator: In, values: ["true"]}

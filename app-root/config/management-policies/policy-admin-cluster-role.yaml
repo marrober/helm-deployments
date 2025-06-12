@@ -89,23 +89,10 @@ metadata:
   name: binding-admin-cluster-role
   namespace: rhacm-policies
 placementRef:
-  name: placement-admin-cluster-role
+  name: placement-local-cluster
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
   - name: admin-cluster-role
     kind: Policy
     apiGroup: policy.open-cluster-management.io
----
-apiVersion: apps.open-cluster-management.io/v1
-kind: PlacementRule
-metadata:
-  name: placement-admin-cluster-role
-  namespace: rhacm-policies
-spec:
-  clusterConditions:
-    - status: "True"
-      type: ManagedClusterConditionAvailable
-  clusterSelector:
-    matchExpressions:
-      - {key: local-cluster, operator: In, values: ["true"]}
