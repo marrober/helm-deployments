@@ -1,7 +1,8 @@
+---
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: rhacm-namespace-policies
+  name: managed-clusterset-bindings
   namespace: rhacm-policies
 spec:
   remediationAction: enforce
@@ -11,11 +12,59 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: rhacm-namespace-policies
+          name: managed-clusterset-bindings
         spec:
-          remediationAction: enforce
           severity: medium
+          remediationAction: enforce
           object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: cluster.open-cluster-management.io/v1beta2
+                kind: ManagedClusterSetBinding
+                metadata:
+                  name: dev-clusters
+                  namespace: openshift-gitops
+                spec:
+                  clusterSet: dev-clusters
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: cluster.open-cluster-management.io/v1beta1
+                kind: Placement
+                metadata:
+                  name: dev-clusters-placement
+                  namespace: openshift-gitops
+                spec:
+                  clusterSets:
+                    - dev-clusters
+                  predicates:
+                    - requiredClusterSelector:
+                        labelSelector:
+                          matchLabels:
+                            vendor: OpenShift
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: cluster.open-cluster-management.io/v1beta2
+                kind: ManagedClusterSetBinding
+                metadata:
+                  name: prod-clusters
+                  namespace: openshift-gitops
+                spec:
+                  clusterSet: prod-clusters
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: cluster.open-cluster-management.io/v1beta1
+                kind: Placement
+                metadata:
+                  name: prod-clusters-placement
+                  namespace: openshift-gitops
+                spec:
+                  clusterSets:
+                    - prod-clusters
+                  predicates:
+                    - requiredClusterSelector:
+                        labelSelector:
+                          matchLabels:
+                            vendor: OpenShift
             - complianceType: musthave
               objectDefinition:
                 kind: ClusterRoleBinding
@@ -50,21 +99,21 @@ spec:
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: binding-rhacm-namespace-policies
+  name: binding-managed-clusterset-bindings
   namespace: rhacm-policies
 placementRef:
-  name: placement-rhacm-namespace-policies
+  name: placement-managed-clusterset-bindings
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-  - name: rhacm-namespace-policies
+  - name: managed-clusterset-bindings
     kind: Policy
     apiGroup: policy.open-cluster-management.io
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: placement-rhacm-namespace-policies
+  name: placement-managed-clusterset-bindings
   namespace: rhacm-policies
 spec:
   clusterConditions:

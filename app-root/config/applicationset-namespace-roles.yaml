@@ -28,9 +28,35 @@ spec:
                 spec:
                   clusterSet: dev-clusters
             - complianceType: musthave 
-
+              objectDefinition:
+                apiVersion: rbac.authorization.k8s.io/v1
+                kind: RoleBinding
+                metadata:
+                  name: argocd-admin
+                  namespace: {{ $ns.metadata.namespace }}
+                roleRef:
+                  apiGroup: rbac.authorization.k8s.io
+                  kind: ClusterRole
+                  name: admin
+                subjects:
+                - kind: ServiceAccount
+                  name: openshift-gitops-argocd-application-controller
+                  namespace: openshift-gitops
             - complianceType: musthave 
-            
+              objectDefinition:
+                kind: ClusterRoleBinding
+                apiVersion: rbac.authorization.k8s.io/v1
+                metadata:
+                  name: mcsb-{{ $ns.metadata.namespace }}
+                  namespace: {{ $ns.metadata.namespace }}
+                subjects:
+                  - kind: ServiceAccount
+                    name: openshift-gitops-argocd-application-controller
+                    namespace: openshift-gitops
+                roleRef:
+                  apiGroup: rbac.authorization.k8s.io
+                  kind: ClusterRole
+                  name: open-cluster-management:managedclusterset:bind:dev-clusters            
             {{- end }}
 ---
 apiVersion: policy.open-cluster-management.io/v1
