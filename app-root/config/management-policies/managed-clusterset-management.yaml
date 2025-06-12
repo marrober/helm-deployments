@@ -31,7 +31,7 @@ spec:
                 apiVersion: cluster.open-cluster-management.io/v1beta1
                 kind: Placement
                 metadata:
-                  name: dev-clusters-placement
+                  name: dev-clusters
                   namespace: openshift-gitops
                 spec:
                   clusterSets:

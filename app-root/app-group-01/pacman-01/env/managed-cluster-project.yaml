@@ -40,7 +40,7 @@ metadata:
   name: pacman-app-01-project-binding
   namespace: openshift-gitops
 placementRef:
-  name: dev-clusters-placement
+  name: dev-clusters
   kind: Placement
   apiGroup: cluster.open-cluster-management.io
 subjects:
