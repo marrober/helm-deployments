@@ -41,8 +41,8 @@ metadata:
   namespace: openshift-gitops
 placementRef:
   name: dev-clusters
-  kind: PlacementRule
-  apiGroup: apps.open-cluster-management.io
+  kind: Placement
+  apiGroup: cluster.open-cluster-management.io
 subjects:
 - name: pacman-app-02-project
   kind: Policy
