@@ -3,6 +3,8 @@ kind: PlacementRule
 metadata:
   name: placement-local-cluster
   namespace: rhacm-policies
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   clusterConditions:
     - status: "True"

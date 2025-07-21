@@ -4,6 +4,8 @@ kind: Policy
 metadata:
   name: ocm-placement-resources
   namespace: rhacm-policies
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   remediationAction: enforce
   disabled: false

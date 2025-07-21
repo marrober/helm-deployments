@@ -4,6 +4,8 @@ kind: Policy
 metadata:
   name: gitops-cluster
   namespace: rhacm-policies
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   remediationAction: enforce
   disabled: false
