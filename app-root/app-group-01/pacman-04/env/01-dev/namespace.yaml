@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels: 
+    applicationSetHubNamespace: "true"
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    targetClusterSet: "dev-clusters"
+  name: pacman-app-04-dev-01
