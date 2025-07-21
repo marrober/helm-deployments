@@ -8,3 +8,17 @@ metadata:
     targetClusterSet: "dev-clusters"
     projectName: pacman-app-01
   name: pacman-app-01-dev-01
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argocd-admin
+  namespace: pacman-app-01-dev-01
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops
