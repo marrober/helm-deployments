@@ -6,4 +6,5 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     targetClusterSet: "dev-clusters"
+    project: pacman-app-03
   name: pacman-app-03-dev-01
