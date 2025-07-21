@@ -6,9 +6,9 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     targetClusterSet: "dev-clusters"
+    projectName: pacman-app-04
   name: pacman-app-04-dev-01
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
