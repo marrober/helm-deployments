@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     targetClusterSet: "dev-clusters"
-    project: pacman-app-04
+    projectName: pacman-app-04
   name: pacman-app-04-dev-02
 ---
 apiVersion: rbac.authorization.k8s.io/v1
