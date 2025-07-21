@@ -6,14 +6,14 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     targetClusterSet: "dev-clusters"
-    projectName: pacman-app-01
-  name: pacman-app-01-dev-02
+    projectName: pacman-app-02
+  name: pacman-app-02-dev-01
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: argocd-admin
-  namespace: pacman-app-01-dev-02
+  namespace: pacman-app-02-dev-01
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
