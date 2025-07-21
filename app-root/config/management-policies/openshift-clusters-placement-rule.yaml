@@ -5,6 +5,7 @@ metadata:
   namespace: rhacm-policies
   annotations:
     argocd.argoproj.io/sync-wave: "2"
+spec:
   clusterConditions:
     - status: "True"
       type: ManagedClusterConditionAvailable
