@@ -12,9 +12,9 @@ spec:
   policy-templates:
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy-1
+        kind: ConfigurationPolicy
         metadata:
-          name: hub-resources
+          name: hub-resources-1
         spec:
           severity: medium
           remediationAction: enforce
@@ -99,9 +99,9 @@ spec:
                   namespace: openshift-gitops    
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy-2
+        kind: ConfigurationPolicy
         metadata:
-          name: hub-resources
+          name: hub-resources-2
         spec:
           severity: medium
           remediationAction: enforce      
