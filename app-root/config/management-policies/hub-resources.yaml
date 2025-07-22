@@ -19,15 +19,7 @@ spec:
           severity: medium
           remediationAction: enforce
           object-templates:
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: cluster.open-cluster-management.io/v1beta2
-                kind: ManagedClusterSetBinding
-                metadata:
-                  name: dev-clusters
-                  namespace: openshift-gitops
-                spec:
-                  clusterSet: dev-clusters
+
             - complianceType: musthave
               objectDefinition:
                 apiVersion: cluster.open-cluster-management.io/v1beta1
@@ -38,30 +30,6 @@ spec:
                 spec:
                   clusterSets:
                     - dev-clusters
-                  predicates:
-                    - requiredClusterSelector:
-                        labelSelector:
-                          matchLabels:
-                            vendor: OpenShift
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: cluster.open-cluster-management.io/v1beta2
-                kind: ManagedClusterSetBinding
-                metadata:
-                  name: prod-clusters
-                  namespace: openshift-gitops
-                spec:
-                  clusterSet: prod-clusters
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: cluster.open-cluster-management.io/v1beta1
-                kind: Placement
-                metadata:
-                  name: prod-clusters-placement
-                  namespace: openshift-gitops
-                spec:
-                  clusterSets:
-                    - prod-clusters
                   predicates:
                     - requiredClusterSelector:
                         labelSelector:
