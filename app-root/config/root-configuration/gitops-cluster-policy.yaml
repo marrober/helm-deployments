@@ -1,0 +1,51 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: gitops-cluster
+  namespace: rhacm-policies
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: gitops-cluster
+        spec:
+          severity: medium
+          remediationAction: enforce
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: apps.open-cluster-management.io/v1beta1
+                kind: GitOpsCluster
+                metadata:
+                  name: argo-acm-clusters-dev-clusters
+                  namespace: openshift-gitops
+                spec:
+                  argoServer:
+                    cluster: local-cluster
+                    argoNamespace: openshift-gitops
+                  placementRef:
+                    kind: Placement
+                    apiVersion: cluster.open-cluster-management.io/v1beta1
+                    name: dev-clusters
+                    namespace: openshift-gitops
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-gitops-cluster
+  namespace: rhacm-policies
+placementRef:
+  name: placement-local-cluster
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: gitops-cluster
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
