@@ -19,7 +19,15 @@ spec:
           severity: medium
           remediationAction: enforce
           object-templates:
-
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: cluster.open-cluster-management.io/v1beta2
+                kind: ManagedClusterSetBinding
+                metadata:
+                  name: dev-clusters
+                  namespace: openshift-gitops
+                spec:
+                  clusterSet: dev-clusters
             - complianceType: musthave
               objectDefinition:
                 apiVersion: cluster.open-cluster-management.io/v1beta1
