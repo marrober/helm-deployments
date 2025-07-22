@@ -28,21 +28,7 @@ spec:
                   name: {{ $ns.metadata.annotations.targetClusterSet }}
                   namespace: {{ $ns.metadata.name }}
                 spec:
-                  clusterSet: {{ $ns.metadata.annotations.targetClusterSet }}
-#            - complianceType: musthave 
-#              objectDefinition:
-#                kind: ClusterRoleBinding
-#                apiVersion: rbac.authorization.k8s.io/v1
-#                metadata:
-#                  name: mcsb-{{ $ns.metadata.name }}
-#                subjects:
-#                  - kind: ServiceAccount
-#                    name: openshift-gitops-argocd-application-controller
-#                    namespace: openshift-gitops
-#                roleRef:
-#                  apiGroup: rbac.authorization.k8s.io
-#                  kind: ClusterRole
-#                  name: open-cluster-management:managedclusterset:bind:dev-clusters  
+                  clusterSet: {{ $ns.metadata.annotations.targetClusterSet }} 
             - complianceType: musthave 
               objectDefinition:
                 apiVersion: argoproj.io/v1alpha1
