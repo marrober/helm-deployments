@@ -18,7 +18,7 @@ spec:
         argocd.argoproj.io/skip-reconcile: "true" 
       labels:
         apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
-      name: pacman-app-01-dev-02
+      name: '{{name}}-pacman-app-01-dev-02'
     spec:
       destination:
         namespace: pacman-app-01-dev-02
