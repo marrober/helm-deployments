@@ -26,7 +26,7 @@ pacman:
 
   securityContext: {}
 
- serviceName: pacman
+  serviceName: pacman
   serviceType: ClusterIP
   servicePort: 8080
   servicePortName: 8080-tcp
