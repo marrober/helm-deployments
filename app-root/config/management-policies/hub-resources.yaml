@@ -12,7 +12,7 @@ spec:
   policy-templates:
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy
+        kind: ConfigurationPolicy-1
         metadata:
           name: hub-resources
         spec:
@@ -96,7 +96,15 @@ spec:
                 subjects:
                 - kind: ServiceAccount
                   name: openshift-gitops-argocd-application-controller
-                  namespace: openshift-gitops          
+                  namespace: openshift-gitops    
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy-2
+        metadata:
+          name: hub-resources
+        spec:
+          severity: medium
+          remediationAction: enforce      
           object-templates-raw: |   
             {{- range $ns:= (lookup "v1" "Namespace" "" "" "applicationSetHubNamespace=true").items }}            
             - complianceType: musthave 
