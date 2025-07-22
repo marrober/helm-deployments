@@ -36,13 +36,13 @@ spec:
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata: 
-  name: pacman-app-02-project-binding
+  name: pacman-app-01-project-binding
   namespace: openshift-gitops
 placementRef:
   name: dev-clusters
   kind: Placement
   apiGroup: cluster.open-cluster-management.io
 subjects:
-- name: pacman-app-02-project
+- name: pacman-app-01-project
   kind: Policy
   apiGroup: policy.open-cluster-management.io
