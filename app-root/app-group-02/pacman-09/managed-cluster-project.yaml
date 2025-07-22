@@ -1,0 +1,62 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: pacman-app-09-project
+  namespace: openshift-gitops
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: pacman-app-09-project
+        spec:
+          severity: medium
+          remediationAction: enforce
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: argoproj.io/v1alpha1
+                kind: AppProject
+                metadata:
+                  name: pacman-app-09
+                  namespace: openshift-gitops
+                spec:
+                  clusterResourceWhitelist:
+                  - group: '*'
+                    kind: '*'
+                  destinations:
+                  - namespace: '*'
+                    server: '*'
+                  sourceRepos:
+                  - '*'
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: pacman-app-09-project-placement
+  namespace: openshift-gitops
+spec:
+  clusterConditions:
+    - status: "True"
+      type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: managed-cluster, operator: In, values: ["yes"]}
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata: 
+  name: pacman-app-09-project-binding
+  namespace: openshift-gitops
+placementRef:
+  name: pacman-app-09-project-placement
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: pacman-app-09-project
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
