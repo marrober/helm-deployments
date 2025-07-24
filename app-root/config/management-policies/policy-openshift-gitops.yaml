@@ -20,22 +20,18 @@ spec:
           remediationAction: enforce
           severity: medium
           object-templates:
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: operators.coreos.com/v1alpha1
-                kind: Subscription
+            - objectDefinition:
+                apiVersion: policy.open-cluster-management.io/v1beta1
+                kind: OperatorPolicy
                 metadata:
                   name: openshift-gitops-operator
-                  namespace: openshift-operators
-                  labels:
-                    operators.coreos.com/openshift-gitops-operator.openshift-operators: ''
                 spec:
-                  channel: latest
-                  installPlanApproval: Automatic
-                  name: openshift-gitops-operator
-                  source: redhat-operators
-                  sourceNamespace: openshift-marketplace
----
+                  remediationAction: enforce
+                  severity: medium
+                  complianceType: musthave
+                  subscription:
+                    name: gitops-operator
+                  upgradeApproval: Automatic
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
