@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - root-configuration/namespace.yaml
 - root-configuration/project.yaml
-- root-configuration.yaml
+- root-configuration/root-configuration.yaml
