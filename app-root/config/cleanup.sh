@@ -47,8 +47,8 @@ oc delete appproject/pacman-app-07
 oc delete appproject/pacman-app-08
 oc delete appproject/pacman-app-09
 oc delete appproject/pacman-app-10
+oc delete appproject/root
 
-oc delete project/argo-root
 oc delete project/pacman-app-01-dev-01
 oc delete project/pacman-app-01-dev-02
 oc delete project/pacman-app-02-dev-01
@@ -69,6 +69,7 @@ oc delete project/pacman-app-09-dev-01
 oc delete project/pacman-app-09-dev-02
 oc delete project/pacman-app-10-dev-01
 oc delete project/pacman-app-10-dev-02
+oc delete project/root
 
 oc delete policy/admin-cluster-role -n rhacm-policies
 oc delete policy/hub-resources -n rhacm-policies
