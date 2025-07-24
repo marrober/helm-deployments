@@ -93,3 +93,28 @@ spec:
       - TaskRun
       - PipelineRun        
 ````
+
+# Sync the argocd apps on the managed clusters 
+
+argocd login <argocd server url without https://>
+
+argocd app sync openshift-gitops/development-pacman-app-01-dev-01
+argocd app sync openshift-gitops/development-pacman-app-01-dev-02
+argocd app sync openshift-gitops/development-pacman-app-02-dev-01
+argocd app sync openshift-gitops/development-pacman-app-02-dev-02
+argocd app sync openshift-gitops/development-pacman-app-03-dev-01
+argocd app sync openshift-gitops/development-pacman-app-03-dev-02
+argocd app sync openshift-gitops/development-pacman-app-04-dev-01
+argocd app sync openshift-gitops/development-pacman-app-04-dev-02
+argocd app sync openshift-gitops/development-pacman-app-05-dev-01
+argocd app sync openshift-gitops/development-pacman-app-05-dev-02
+argocd app sync openshift-gitops/development-pacman-app-06-dev-01
+argocd app sync openshift-gitops/development-pacman-app-06-dev-02
+argocd app sync openshift-gitops/development-pacman-app-07-dev-01
+argocd app sync openshift-gitops/development-pacman-app-07-dev-02
+argocd app sync openshift-gitops/development-pacman-app-08-dev-01
+argocd app sync openshift-gitops/development-pacman-app-08-dev-02
+argocd app sync openshift-gitops/development-pacman-app-09-dev-01
+argocd app sync openshift-gitops/development-pacman-app-09-dev-02
+argocd app sync openshift-gitops/development-pacman-app-10-dev-01
+argocd app sync openshift-gitops/development-pacman-app-10-dev-02

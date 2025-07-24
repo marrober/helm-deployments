@@ -11,7 +11,7 @@ pacman:
 
   clusterAPI: apps.development.sandbox2161.opentlc.com
 
-  replicaCount: 1
+  replicaCount: 2
 
   imageRepositoryName: quay.io/marrober/pacman
   imageRepositoryTag: g3a59
