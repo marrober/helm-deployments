@@ -90,7 +90,7 @@ metadata:
   name: binding-admin-cluster-role
   namespace: rhacm-policies
 placementRef:
-  name: placement-local-cluster
+  name:  hub-resources-placement
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
