@@ -17,7 +17,7 @@ spec:
           severity: medium
           complianceType: musthave
           subscription:
-            name: gitops-operator
+            name: openshift-gitops-operator
           upgradeApproval: Automatic
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
