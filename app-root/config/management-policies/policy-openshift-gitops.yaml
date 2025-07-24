@@ -20,7 +20,8 @@ spec:
           remediationAction: enforce
           severity: medium
           object-templates:
-            - objectDefinition:
+            - complianceType: musthave
+              objectDefinition:
                 apiVersion: policy.open-cluster-management.io/v1beta1
                 kind: OperatorPolicy
                 metadata:
