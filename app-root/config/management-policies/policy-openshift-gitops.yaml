@@ -41,8 +41,6 @@ kind: PlacementRule
 metadata:
   name: openshift-clusters-placement-rule
   namespace: rhacm-policies
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
 spec:
   clusterConditions:
     - status: "True"
