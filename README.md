@@ -98,6 +98,8 @@ spec:
 
 argocd login <argocd server url without https://>
 
+(Not actually needed as the apps will sync on an ArgoCD cycle)
+
 argocd app sync openshift-gitops/development-pacman-app-01-dev-01
 argocd app sync openshift-gitops/development-pacman-app-01-dev-02
 argocd app sync openshift-gitops/development-pacman-app-02-dev-01
