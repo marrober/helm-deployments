@@ -88,7 +88,32 @@ spec:
                 subjects:
                 - kind: ServiceAccount
                   name: openshift-gitops-argocd-application-controller
-                  namespace: openshift-gitops    
+                  namespace: openshift-gitops  
+            - complianceType: musthave
+              objectDefinition:
+              apiVersion: rbac.authorization.k8s.io/v1
+              kind: ClusterRole
+              metadata:
+                name: patch-policy-clusterrole
+                namespace: rhacm-policies
+              rules:
+              - apiGroups: ["policy.open-cluster-management.io"]
+                resources: ["policies"]
+                verbs: ["patch"]    
+            - complianceType: musthave
+              objectDefinition:
+              apiVersion: rbac.authorization.k8s.io/v1
+              kind: ClusterRoleBinding
+              metadata:
+                name: patch-policy-clusterrolebinding
+              subjects:
+              - kind: ServiceAccount
+                name: argocd-application-controller
+                namespace: openshift-gitops
+              roleRef:
+                apiGroup: rbac.authorization.k8s.io
+                kind: ClusterRole
+                name: patch-policy-clusterrole                                                   
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
