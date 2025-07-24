@@ -20,7 +20,7 @@ The below definition configures enough resources for the application controller 
 apiVersion: argoproj.io/v1beta1
 kind: ArgoCD
 metadata:
-  name: argocd
+  name: openshift-gitops
   namespace: openshift-gitops
 spec:
   server:
