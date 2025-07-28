@@ -1,6 +1,16 @@
 # Setup
 
+Labels for OpenShift Clusters
 
+Hub Cluster :
+  local-cluster=true (should be already present)
+
+Managed Clusters : 
+  managed-cluster=yes
+
+## Cluster set
+
+Create a clusterset called 'dev-clusters' with all dev-clusters present.
 
 ## Get the ArgoCD credentials and address :
 
