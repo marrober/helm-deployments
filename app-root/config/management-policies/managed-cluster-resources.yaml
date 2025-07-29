@@ -63,3 +63,17 @@ spec:
   clusterSelector:
     matchExpressions:
       - {key: local-cluster, operator: NotIn, values: ["true"]}
+---
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: managed-cluster-resources-placement
+  namespace: openshift-gitops
+spec:
+  clusterConditions:
+    - status: "True"
+      type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: local-cluster, operator: NotIn, values: ["true"]}
