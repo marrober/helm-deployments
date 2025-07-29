@@ -9,14 +9,14 @@ spec:
   destination:
     namespace: pacman-app-11
     server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/marrober/helm-deployments.git
-    path: app-root/app-group-03/pacman-11/env/01-dev
-    targetRevision: main
-    helm:
-      releaseName: application-set
-      valueFiles:
-      - values.yaml
+  sources:
+    - repoURL: https://github.com/marrober/helm-deployments.git
+      path: app-root/app-group-03/pacman-11/env/01-dev
+      targetRevision: main
+      helm:
+        releaseName: application-set
+        valueFiles:
+        - values.yaml
   project: pacman-app-11
   syncPolicy:
     automated:
