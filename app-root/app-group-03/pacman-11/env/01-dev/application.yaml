@@ -14,7 +14,7 @@ spec:
     path: app-root/app-group-03/pacman-11/env/01-dev
     targetRevision: main
     helm:
-      releaseName: applicationSet
+      releaseName: application-set
       valueFiles:
       - values.yaml
   project: pacman-app-11

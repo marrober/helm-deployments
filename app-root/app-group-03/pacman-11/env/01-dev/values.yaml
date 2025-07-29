@@ -5,6 +5,3 @@ TargetClusterSet: dev-clusters
 configRepositoryURL: https://github.com/marrober/helm-deployments.git
 configRepositoryPath: app-root/app-group-01/pacman-11/deployment/01-dev
 configRepositoryRevision: main
-
-helmReleaseName: pacman-helm-dev
-valuesFileName: values.yaml
