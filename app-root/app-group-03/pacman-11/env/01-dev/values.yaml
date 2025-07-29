@@ -1,7 +1,8 @@
-Name: pacman-app-11
-Environment: dev-01
-TargetClusterSet: dev-clusters
+applicationSet:
+  Name: pacman-app-11
+  Environment: dev-01
+  TargetClusterSet: dev-clusters
 
-configRepositoryURL: https://github.com/marrober/helm-deployments.git
-configRepositoryPath: app-root/app-group-01/pacman-11/deployment/01-dev
-configRepositoryRevision: main
+  configRepositoryURL: https://github.com/marrober/helm-deployments.git
+  configRepositoryPath: app-root/app-group-01/pacman-11/deployment/01-dev
+  configRepositoryRevision: main
