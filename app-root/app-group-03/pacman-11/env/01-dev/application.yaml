@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pacman-app-11
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  destination:
+    namespace: pacman-app-11
+    server: https://kubernetes.default.svc
+      source:
+        repoURL: https://github.com/marrober/helm-deployments.git
+        path: app-root/app-group-03/pacman-11/env/01-dev
+        targetRevision: main
+        helm:
+          releaseName: applicationSet
+          valueFiles:
+          - values.yaml
+  project: pacman-app-11
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=true
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
+    retry:
+      limit: 3
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 1m
