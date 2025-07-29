@@ -40,8 +40,8 @@ metadata:
   name: pacman-app-09-project-binding
   namespace: openshift-gitops
 placementRef:
-  name: pacman-app-09-project-placement
-  kind: managed-cluster-resources-placement
+  name: managed-cluster-resources-placement
+  kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
 - name: pacman-app-09-project
