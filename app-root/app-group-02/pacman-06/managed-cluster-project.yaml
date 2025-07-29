@@ -34,19 +34,6 @@ spec:
                   sourceRepos:
                   - '*'
 ---
-apiVersion: apps.open-cluster-management.io/v1
-kind: PlacementRule
-metadata:
-  name: pacman-app-06-project-placement
-  namespace: openshift-gitops
-spec:
-  clusterConditions:
-    - status: "True"
-      type: ManagedClusterConditionAvailable
-  clusterSelector:
-    matchExpressions:
-      - {key: managed-cluster, operator: In, values: ["yes"]}
----
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata: 
@@ -54,7 +41,7 @@ metadata:
   namespace: openshift-gitops
 placementRef:
   name: pacman-app-06-project-placement
-  kind: PlacementRule
+  kind: managed-cluster-resources-placement
   apiGroup: apps.open-cluster-management.io
 subjects:
 - name: pacman-app-06-project

@@ -2,7 +2,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: target-resources
+  name: managed-cluster-resources
   namespace: rhacm-policies
   annotations:
     argocd.argoproj.io/sync-wave: "3"
@@ -14,7 +14,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: target-resources
+          name: managed-cluster-resources
         spec:
           severity: medium
           remediationAction: enforce
@@ -40,21 +40,21 @@ spec:
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: target-resources-bindings
+  name: managed-cluster-resources-bindings
   namespace: rhacm-policies
 placementRef:
-  name: target-resources-placement
+  name: managed-cluster-resources-placement
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-  - name: target-resources
+  - name: managed-cluster-resources
     kind: Policy
     apiGroup: policy.open-cluster-management.io
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: target-resources-placement
+  name: managed-cluster-resources-placement
   namespace: rhacm-policies
 spec:
   clusterConditions:
