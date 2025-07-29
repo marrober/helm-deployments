@@ -17,6 +17,13 @@ spec:
         releaseName: application-set
         valueFiles:
         - values.yaml
+    - repoURL: https://github.com/marrober/helm-deployments.git
+      path: app-root/app-group-03/pacman-11/env/02-dev
+      targetRevision: main
+      helm:
+        releaseName: application-set
+        valueFiles:
+        - values.yaml
   project: pacman-app-11
   syncPolicy:
     automated:
