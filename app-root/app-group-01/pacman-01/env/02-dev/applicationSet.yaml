@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: pacman-app-01-dev-02
-  namespace: pacman-app-01
+  namespace: pacman-app-01-dev-02
 spec:
   generators:
     - clusterDecisionResource:
@@ -14,7 +14,7 @@ spec:
     metadata:
       annotations:
         apps.open-cluster-management.io/ocm-managed-cluster: '{{name}}'
-        apps.open-cluster-management.io/ocm-managed-cluster-app-namespace: pacman-app-01
+        apps.open-cluster-management.io/ocm-managed-cluster-app-namespace:  pacman-app-01-dev-02
         argocd.argoproj.io/skip-reconcile: "true" 
       labels:
         apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
