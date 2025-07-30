@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: pacman-app-06-dev-02
-  namespace: openshift-gitops
+  namespace: pacman-app-06
 spec:
   generators:
     - clusterDecisionResource:
@@ -14,7 +14,7 @@ spec:
     metadata:
       annotations:
         apps.open-cluster-management.io/ocm-managed-cluster: '{{name}}'
-        apps.open-cluster-management.io/ocm-managed-cluster-app-namespace: openshift-gitops
+        apps.open-cluster-management.io/ocm-managed-cluster-app-namespace: pacman-app-06
         argocd.argoproj.io/skip-reconcile: "true" 
       labels:
         apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
