@@ -1,0 +1,48 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: pacnew-app-03-project
+  namespace: new-gitops
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: pacnew-app-03-project
+        spec:
+          severity: medium
+          remediationAction: enforce
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: argoproj.io/v1alpha1
+                kind: AppProject
+                metadata:
+                  name: pacnew-app-03
+                  namespace: new-gitops
+                spec:
+                  clusterResourceWhitelist:
+                  - group: '*'
+                    kind: '*'
+                  destinations:
+                  - namespace: '*'
+                    server: '*'
+                  sourceRepos:
+                  - '*'
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata: 
+  name: pacnew-app-03-project-binding
+  namespace: new-gitops
+placementRef:
+  name: dev-clusters
+  kind: Placement
+  apiGroup: cluster.open-cluster-management.io
+subjects:
+- name: pacnew-app-03-project
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io

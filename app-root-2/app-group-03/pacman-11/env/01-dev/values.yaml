@@ -1,0 +1,11 @@
+applicationSet:
+  Name: pacnew-app-11
+  Environment: dev-01
+  TargetClusterSet: dev-clusters
+
+  configRepositoryURL: https://github.com/marrober/helm-deployments.git
+  configRepositoryPath: app-root-2/app-group-03/pacnew-11/deployment/01-dev
+  configRepositoryRevision: main
+
+  helmReleaseName: application-set
+  valuesFileName: values.yaml

@@ -1,0 +1,65 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pacnew-app-12
+  namespace: new-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  destination:
+    namespace: pacnew-app-12
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://github.com/marrober/helm-deployments.git
+      path: app-root-2/app-group-03/pacnew-12/env/01-dev
+      targetRevision: main
+      helm:
+        releaseName: application-set
+        valueFiles:
+        - values.yaml
+    - repoURL: https://github.com/marrober/helm-deployments.git
+      path: app-root-2/app-group-03/pacnew-12/env/02-dev
+      targetRevision: main
+      helm:
+        releaseName: application-set
+        valueFiles:
+        - values.yaml
+  project: pacnew-app-12
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=true
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
+    retry:
+      limit: 3
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 1m
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: pacnew-app-12
+  namespace: new-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'

@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: pacnew-app-08-dev-02
+  namespace: new-gitops
+spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: ocm-placement-generator
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: dev-clusters
+  template:
+    metadata:
+      annotations:
+        apps.open-cluster-management.io/ocm-managed-cluster: '{{name}}'
+        apps.open-cluster-management.io/ocm-managed-cluster-app-namespace: new-gitops
+        argocd.argoproj.io/skip-reconcile: "true" 
+      labels:
+        apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
+      name: '{{name}}-pacnew-app-08-dev-02'
+    spec:
+      destination:
+        namespace: pacnew-app-08-dev-02
+        server: '{{server}}'
+      project: pacnew-app-08
+      source:
+        repoURL: https://github.com/marrober/helm-deployments.git
+        path: app-root-2/app-group-02/pacnew-08/deployment/02-dev
+        targetRevision: main
+        helm:
+          releaseName: pacnew-helm-dev
+          valueFiles:
+          - values.yaml
+      syncPolicy:
+        automated: {}
+        syncOptions:
+        - CreateNamespace=true
+        retry:
+          limit: 5 
+          backoff:
+            duration: 5s
+            factor: 2 
+            maxDuration: 30s

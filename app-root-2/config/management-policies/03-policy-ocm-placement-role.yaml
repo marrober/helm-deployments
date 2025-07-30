@@ -1,0 +1,77 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: ocm-placement-resources-2
+  namespace: rhacm-policies-2
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: ocm-placement-resources
+        spec:
+          severity: medium
+          remediationAction: enforce
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: rbac.authorization.k8s.io/v1
+                kind: Role
+                metadata:
+                  name: ocm-placement-consumer
+                  namespace: new-gitops
+                rules:
+                # Allow controller to manage placements/placementdecisions
+                - apiGroups: ["cluster.open-cluster-management.io"]
+                  resources: ["placements"]
+                  verbs: ["get", "list"]
+                - apiGroups: ["cluster.open-cluster-management.io"]
+                  resources: ["placementdecisions"]
+                  verbs: ["get", "list"]
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: rbac.authorization.k8s.io/v1
+                kind: RoleBinding
+                metadata:
+                  name: ocm-placement-consumer:openshift-gitops
+                  namespace: new-gitops
+                roleRef:
+                  apiGroup: rbac.authorization.k8s.io
+                  kind: Role
+                  name: ocm-placement-consumer
+                subjects:
+                - kind: ServiceAccount
+                  namespace: new-gitops
+                  name: argocd-applicationset-controller
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: v1
+                kind: ConfigMap
+                metadata:
+                  name: ocm-placement-generator
+                  namespace: new-gitops
+                data:
+                  apiVersion: cluster.open-cluster-management.io/v1beta1
+                  kind: placementdecisions
+                  statusListKey: decisions
+                  matchKey: clusterName
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-ocm-placement-resources
+  namespace: rhacm-policies-2
+placementRef:
+  name:  hub-resources-placement
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: ocm-placement-resources
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io

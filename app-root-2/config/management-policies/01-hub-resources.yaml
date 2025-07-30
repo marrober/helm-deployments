@@ -1,0 +1,160 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: hub-resources-2
+  namespace: rhacm-policies-2
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: hub-resources-2-1
+        spec:
+          severity: medium
+          remediationAction: enforce
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: cluster.open-cluster-management.io/v1beta2
+                kind: ManagedClusterSetBinding
+                metadata:
+                  name: dev-clusters
+                  namespace: new-gitops
+                spec:
+                  clusterSet: dev-clusters
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: apps.open-cluster-management.io/v1beta1
+                kind: GitOpsCluster
+                metadata:
+                  name: argo-acm-clusters-dev-clusters
+                  namespace: new-gitops
+                spec:
+                  argoServer:
+                    cluster: local-cluster
+                    argonamespace: new-gitops
+                  placementRef:
+                    kind: Placement
+                    apiVersion: cluster.open-cluster-management.io/v1beta1
+                    name: dev-clusters
+                    namespace: new-gitops
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: cluster.open-cluster-management.io/v1beta1
+                kind: Placement
+                metadata:
+                  name: dev-clusters
+                  namespace: new-gitops
+                spec:
+                  clusterSets:
+                    - dev-clusters
+                  predicates:
+                    - requiredClusterSelector:
+                        labelSelector:
+                          matchLabels:
+                            vendor: OpenShift
+            - complianceType: musthave
+              objectDefinition:
+                kind: ClusterRoleBinding
+                apiVersion: rbac.authorization.k8s.io/v1
+                metadata:
+                  name: gitops-create-managed-clusterset-binding-rhacm-policies-2
+                  namespace: rhacm-policies-2
+                subjects:
+                  - kind: ServiceAccount
+                    name: openshift-gitops-argocd-application-controller
+                    namespace: new-gitops
+                roleRef:
+                  apiGroup: rbac.authorization.k8s.io
+                  kind: ClusterRole
+                  name: open-cluster-management:managedclusterset:bind:dev-clusters
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: rbac.authorization.k8s.io/v1
+                kind: ClusterRoleBinding
+                metadata:
+                  name: argocd-managed-rhacm-policies-2
+                  namespace: rhacm-policies-2
+                roleRef:
+                  apiGroup: rbac.authorization.k8s.io
+                  kind: ClusterRole
+                  name: admin
+                subjects:
+                - kind: ServiceAccount
+                  name: openshift-gitops-argocd-application-controller
+                  namespace: new-gitops                                                      
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: hub-resources-2-2
+        spec:
+          severity: medium
+          remediationAction: enforce      
+          object-templates-raw: |   
+            {{- range $ns:= (lookup "v1" "Namespace" "" "" "applicationSetHubNamespace=true").items }}            
+            - complianceType: musthave 
+              objectDefinition:
+                apiVersion: cluster.open-cluster-management.io/v1beta2
+                kind: ManagedClusterSetBinding
+                metadata:
+                  name: {{ $ns.metadata.annotations.targetClusterSet }}
+                  namespace: {{ $ns.metadata.name }}
+                spec:
+                  clusterSet: {{ $ns.metadata.annotations.targetClusterSet }} 
+            - complianceType: musthave 
+              objectDefinition:
+                apiVersion: argoproj.io/v1alpha1
+                kind: AppProject
+                metadata:
+                  name: {{ $ns.metadata.annotations.projectName }}
+                  namespace: new-gitops
+                spec:
+                  sourceNamespaces:
+                  - {{ $ns.metadata.name }}
+                  sourceRepos:
+                  - '*'
+                  destinations:
+                  - server: '*'
+                    namespace: '*'
+                  clusterResourceWhitelist:
+                  - group: ''
+                    kind: Namespace
+                  - group: 'rbac.authorization.k8s.io'
+                    kind: ClusterRole
+                  - group: 'rbac.authorization.k8s.io'
+                    kind: ClusterRoleBinding
+            {{- end }}
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: hub-resources-bindings
+  namespace: rhacm-policies-2
+placementRef:
+  name: hub-resources-placement
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: hub-resources
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: hub-resources-placement
+  namespace: rhacm-policies-2
+spec:
+  clusterConditions:
+    - status: "True"
+      type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: local-cluster, operator: In, values: ["true"]}
