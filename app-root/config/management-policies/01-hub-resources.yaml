@@ -117,7 +117,7 @@ spec:
                   namespace: openshift-gitops
                 spec:
                   sourceNamespaces:
-                  - {{ $ns.metadata.annotations.projectName }}
+                  - {{ $ns.metadata.name }}
                   sourceRepos:
                   - '*'
                   destinations:
