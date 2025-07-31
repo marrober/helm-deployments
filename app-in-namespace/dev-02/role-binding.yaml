@@ -33,9 +33,9 @@ metadata:
   name: argocd-management-rolebinding
   namespace: pacman-01-dev-01
 roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: admin
+  apiGroup: rbac.authorization.k8s.io  
+  kind: Role
+  name: argocd-management
 subjects:
 - kind: ServiceAccount
   name: pacman-01-argocd
