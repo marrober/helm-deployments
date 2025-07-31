@@ -9,7 +9,7 @@ spec:
     namespace: pacman-02-dev-02
     server: https://kubernetes.default.svc
   source:
-    path: app-in-namespace/pacman/02/dev-02
+    path: app-in-namespace/pacman-02/dev-02
     targetRevision: main
     repoURL: https://github.com/marrober/helm-deployments.git
   syncPolicy:

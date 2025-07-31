@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pacman-02-dev-02
+  name: pacman-02-dev-01
   namespace: pacman-02-argocd
 spec:
   project: pacman-02
   destination:
-    namespace: pacman-02-dev-02
+    namespace: pacman-02-dev-01
     server: https://kubernetes.default.svc
   source:
-    path: app-in-namespace/pacman-02/dev-02
+    path: app-in-namespace/pacman-02/dev-01
     targetRevision: main
     repoURL: https://github.com/marrober/helm-deployments.git
   syncPolicy:
