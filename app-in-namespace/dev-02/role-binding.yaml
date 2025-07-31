@@ -1,21 +1,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: argocd-admin
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: admin
-subjects:
-- kind: ServiceAccount
-  name: openshift-gitops-argocd-application-controller
-  namespace: pacman-01-argocd
----
-apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: argocd-management
-  namespace: pacman-01-dev-01
+  namespace: pacman-01-dev-02
 rules:
 - apiGroups:
   - "*"
@@ -31,10 +18,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: argocd-management-rolebinding
+  namespace: pacman-01-dev-02
 roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: admin
+  apiGroup: rbac.authorization.k8s.io  
+  kind: Role
+  name: argocd-management
 subjects:
 - kind: ServiceAccount
   name: pacman-01-argocd
