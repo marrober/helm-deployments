@@ -11,9 +11,7 @@ spec:
   source:
     path: app-in-namespace/dev-01
     targetRevision: main
-    - repoURL: https://github.com/marrober/helm-deployments.git
-      targetRevision: main
-      ref: values
+    repoURL: https://github.com/marrober/helm-deployments.git
   syncPolicy:
     automated: 
       prune: true 
