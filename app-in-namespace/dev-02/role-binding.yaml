@@ -10,3 +10,34 @@ subjects:
 - kind: ServiceAccount
   name: openshift-gitops-argocd-application-controller
   namespace: pacman-01-argocd
+---
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: argocd-management
+  namespace: pacman-01-dev-01
+rules:
+- apiGroups:
+  - "*"
+  resources:
+  - "*"
+  verbs:
+  - Get
+  - List
+  - Watch
+  - Patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argocd-management-rolebinding
+  namespace: pacman-01-dev-01
+roleRef:
+  apiGroup: rbac.authorization.k8s.io  
+  kind: Role
+  name: argocd-management
+subjects:
+- kind: ServiceAccount
+  name: pacman-01-argocd
+  namespace: pacman-01-argocd-argocd-application-controller
