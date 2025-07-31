@@ -1,9 +1,17 @@
+oc delete policy/admin-cluster-role -n rhacm-policies
+oc delete policy/hub-resources -n rhacm-policies
+oc delete policy/managed-cluster-role -n rhacm-policies
+oc delete policy/managed-clusterset-bindings -n rhacm-policies
+oc delete policy/ocm-placement-resources -n rhacm-policies
+oc delete policy/target-resources -n rhacm-policies
+
 oc delete application.argoproj.io/application-groups
 oc delete application.argoproj.io/management-policies
 oc delete application.argoproj.io/root
 
 oc delete  application.argoproj.io/app-group-01  
 oc delete  application.argoproj.io/app-group-02
+oc delete  application.argoproj.io/app-group-03
 
 oc delete applicationset/pacman-app-01-dev-01   
 oc delete applicationset/pacman-app-01-dev-02  
@@ -24,7 +32,12 @@ oc delete applicationset pacman-app-08-dev-02
 oc delete applicationset pacman-app-09-dev-01   
 oc delete applicationset pacman-app-09-dev-02  
 oc delete applicationset pacman-app-10-dev-01   
-oc delete applicationset pacman-app-10-dev-02   
+oc delete applicationset pacman-app-10-dev-02 
+oc delete applicationset pacman-app-11-dev-01   
+oc delete applicationset pacman-app-11-dev-02   
+oc delete applicationset pacman-app-12-dev-01   
+oc delete applicationset pacman-app-12-dev-02   
+
 
 oc delete policy/pacman-app-01-project
 oc delete policy/pacman-app-02-project
@@ -47,6 +60,8 @@ oc delete appproject/pacman-app-07
 oc delete appproject/pacman-app-08
 oc delete appproject/pacman-app-09
 oc delete appproject/pacman-app-10
+oc delete appproject/pacman-app-11
+oc delete appproject/pacman-app-12
 oc delete appproject/root
 
 oc delete project/pacman-app-01-dev-01
@@ -69,11 +84,11 @@ oc delete project/pacman-app-09-dev-01
 oc delete project/pacman-app-09-dev-02
 oc delete project/pacman-app-10-dev-01
 oc delete project/pacman-app-10-dev-02
+oc delete project/pacman-app-11-dev-01
+oc delete project/pacman-app-11-dev-02
+oc delete project/pacman-app-12-dev-01
+oc delete project/pacman-app-12-dev-02
 oc delete project/root
+oc delete project/rhacm-policies
 
-oc delete policy/admin-cluster-role -n rhacm-policies
-oc delete policy/hub-resources -n rhacm-policies
-oc delete policy/managed-cluster-role -n rhacm-policies
-oc delete policy/managed-clusterset-bindings -n rhacm-policies
-oc delete policy/ocm-placement-resources -n rhacm-policies
-oc delete policy/target-resources -n rhacm-policies
+
