@@ -8,14 +8,9 @@ spec:
   destination:
     namespace: pacman-01-dev-01
     server: https://kubernetes.default.svc
-  sources:
-    - repoURL: https://marrober.github.io/helm-charts/
-      chart: pacman
-      targetRevision: 0.1.9
-      helm:
-        releaseName: pacman-helm-dev
-        valueFiles:
-          - app-in-namespace/dev-01
+  source:
+    path: app-in-namespace/dev-01
+    targetRevision: main
     - repoURL: https://github.com/marrober/helm-deployments.git
       targetRevision: main
       ref: values
