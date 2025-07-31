@@ -2,7 +2,6 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: pacman
-  namespace: pacman-01-argocd
   labels:
     app.kubernetes.io/instance: pacman-dev
     app.kubernetes.io/name: pacman
