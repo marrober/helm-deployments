@@ -12,8 +12,6 @@ spec:
     path: app-in-namespace/pacman-01/deployments
     targetRevision: main
     repoURL: https://github.com/marrober/helm-deployments.git
-    directory: 
-      recurse: true
   syncPolicy:
     automated: 
       prune: true 
