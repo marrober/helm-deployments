@@ -5,3 +5,4 @@ resources:
 - 01-namespaces.yaml
 - 02-argocd-definition.yaml
 - 03-app-project.yaml
+- 04-root-application.yaml
