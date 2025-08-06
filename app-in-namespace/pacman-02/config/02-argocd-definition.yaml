@@ -5,6 +5,7 @@ metadata:
   namespace: pacman-02-argocd
 spec:
   server:
+    host: pacman-02-argocd-server-pacman-02-argocd.apps.cluster-mspjm.mspjm.sandbox3009.opentlc.com
     autoscale:
       enabled: false
     grpc:
@@ -66,7 +67,6 @@ spec:
   extraConfig:
     application.namespaces: pacman-02-dev-*
     applicationsetcontroller.namespaces: pacman-02-dev-*
-    url: https://pacman-02-argocd-server-pacman-02-argocd.apps.cluster-mspjm.mspjm.sandbox3009.opentlc.com
   repo:
     resources:
       limits:
