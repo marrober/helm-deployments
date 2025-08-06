@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: pacman-03
+  namespace: pacman-03-argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+  sourceNamespaces: 
+  - pacman-03-dev-*
+  roles:
+  - name: developer
+    groups: 
+    - pacman-03
+    policies:
+    - p, proj:pacman-03:developer, applications, get, pacman-03/*, allow
+    - p, proj:pacman-03:developer, applications, sync, pacman-03/*, allow  
