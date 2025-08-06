@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- 01-namespaces.yaml
+- 02-argocd-definition.yaml
+- 03-app-project.yaml
+- 04-route.yaml
+- 05-root-application.yaml

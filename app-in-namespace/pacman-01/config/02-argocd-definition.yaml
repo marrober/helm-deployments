@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1beta1
 kind: ArgoCD
 metadata:
   name: pacman-01-argocd
-  namespace: pacman-01-argocd
+  namespace: pacman-01-argocd 
 spec:
   server:
     autoscale:
@@ -66,6 +66,7 @@ spec:
   extraConfig:
     application.namespaces: pacman-01-dev-*
     applicationsetcontroller.namespaces: pacman-01-dev-*
+    url: https://pacman-01-argocd-server-pacman-01-argocd.apps.cluster-mspjm.mspjm.sandbox3009.opentlc.com
   repo:
     resources:
       limits:
@@ -106,8 +107,8 @@ spec:
     resources:
       limits:
         cpu: '2'
-        memory: 512Mi
+        memory: 1024Mi
       requests:
         cpu: '1'
-        memory: 256Mi
+        memory: 512Mi
     sharding: {}

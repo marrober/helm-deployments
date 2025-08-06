@@ -66,6 +66,7 @@ spec:
   extraConfig:
     application.namespaces: pacman-02-dev-*
     applicationsetcontroller.namespaces: pacman-02-dev-*
+    url: https://pacman-02-argocd-server-pacman-02-argocd.apps.cluster-mspjm.mspjm.sandbox3009.opentlc.com
   repo:
     resources:
       limits:
@@ -106,8 +107,8 @@ spec:
     resources:
       limits:
         cpu: '2'
-        memory: 512Mi
+        memory: 1024Mi
       requests:
         cpu: '1'
-        memory: 256Mi
+        memory: 512Mi
     sharding: {}
