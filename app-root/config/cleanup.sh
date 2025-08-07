@@ -27,17 +27,42 @@ oc delete applicationset/pacman-app-06-dev-01
 oc delete applicationset/pacman-app-06-dev-02 
 oc delete applicationset/pacman-app-07-dev-01  
 oc delete applicationset/pacman-app-07-dev-02  
-oc delete applicationset pacman-app-08-dev-01  
-oc delete applicationset pacman-app-08-dev-02  
-oc delete applicationset pacman-app-09-dev-01   
-oc delete applicationset pacman-app-09-dev-02  
-oc delete applicationset pacman-app-10-dev-01   
-oc delete applicationset pacman-app-10-dev-02 
-oc delete applicationset pacman-app-11-dev-01   
-oc delete applicationset pacman-app-11-dev-02   
-oc delete applicationset pacman-app-12-dev-01   
-oc delete applicationset pacman-app-12-dev-02   
+oc delete applicationset/pacman-app-08-dev-01  
+oc delete applicationset/pacman-app-08-dev-02  
+oc delete applicationset/pacman-app-09-dev-01   
+oc delete applicationset/pacman-app-09-dev-02  
+oc delete applicationset/pacman-app-10-dev-01   
+oc delete applicationset/pacman-app-10-dev-02 
+oc delete applicationset/pacman-app-11-dev-01   
+oc delete applicationset/pacman-app-11-dev-02   
+oc delete applicationset/pacman-app-12-dev-01   
+oc delete applicationset/pacman-app-12-dev-02   
 
+
+oc delete application.argoproj.io/development-pacman-app-01-dev-01 -n pacman-app-01-dev-01
+oc delete application.argoproj.io/development-pacman-app-01-dev-02 -n pacman-app-01-dev-02 
+oc delete application.argoproj.io/development-pacman-app-02-dev-01 -n pacman-app-02-dev-01
+oc delete application.argoproj.io/development-pacman-app-02-dev-02 -n pacman-app-02-dev-02
+oc delete application.argoproj.io/development-pacman-app-03-dev-01 -n pacman-app-03-dev-01
+oc delete application.argoproj.io/development-pacman-app-03-dev-02 -n pacman-app-03-dev-02
+oc delete application.argoproj.io/development-pacman-app-04-dev-01 -n pacman-app-04-dev-01 
+oc delete application.argoproj.io/development-pacman-app-04-dev-02 -n pacman-app-04-dev-02
+oc delete application.argoproj.io/development-pacman-app-05-dev-01 -n pacman-app-05-dev-01 
+oc delete application.argoproj.io/development-pacman-app-05-dev-02 -n pacman-app-05-dev-02 
+oc delete application.argoproj.io/development-pacman-app-06-dev-01 -n pacman-app-06-dev-01  
+oc delete application.argoproj.io/development-pacman-app-06-dev-02 -n pacman-app-06-dev-02 
+oc delete application.argoproj.io/development-pacman-app-07-dev-01 -n pacman-app-07-dev-01  
+oc delete application.argoproj.io/development-pacman-app-07-dev-02 -n pacman-app-07-dev-02  
+oc delete application.argoproj.io/development-pacman-app-08-dev-01 -n pacman-app-08-dev-01  
+oc delete application.argoproj.io/development-pacman-app-08-dev-02 -n pacman-app-08-dev-02  
+oc delete application.argoproj.io/development-pacman-app-09-dev-01 -n pacman-app-09-dev-01   
+oc delete application.argoproj.io/development-pacman-app-09-dev-02 -n pacman-app-09-dev-02  
+oc delete application.argoproj.io/development-pacman-app-10-dev-01 -n pacman-app-10-dev-01   
+oc delete application.argoproj.io/development-pacman-app-10-dev-02 -n pacman-app-10-dev-02 
+oc delete application.argoproj.io/development-pacman-app-11-dev-01 -n pacman-app-11-dev-01   
+oc delete application.argoproj.io/development-pacman-app-11-dev-02 -n pacman-app-11-dev-02   
+oc delete application.argoproj.io/development-pacman-app-12-dev-01 -n pacman-app-12-dev-01   
+oc delete application.argoproj.io/development-pacman-app-12-dev-02 -n pacman-app-12-dev-02   
 
 oc delete policy/pacman-app-01-project
 oc delete policy/pacman-app-02-project
