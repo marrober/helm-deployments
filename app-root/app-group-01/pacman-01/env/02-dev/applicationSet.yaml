@@ -14,7 +14,7 @@ spec:
     metadata:
       annotations:
         apps.open-cluster-management.io/ocm-managed-cluster: '{{name}}'
-        apps.open-cluster-management.io/ocm-managed-cluster-app-namespace:  pacman-app-01-dev-02
+        apps.open-cluster-management.io/ocm-managed-cluster-app-namespace:  openshift-gitops
         argocd.argoproj.io/skip-reconcile: "true" 
       labels:
         apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
