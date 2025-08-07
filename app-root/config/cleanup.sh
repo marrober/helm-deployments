@@ -1,17 +1,16 @@
-oc delete policy/admin-cluster-role -n rhacm-policies
-oc delete policy/hub-resources -n rhacm-policies
-oc delete policy/managed-cluster-role -n rhacm-policies
-oc delete policy/managed-clusterset-bindings -n rhacm-policies
-oc delete policy/ocm-placement-resources -n rhacm-policies
-oc delete policy/target-resources -n rhacm-policies
-
 oc delete application.argoproj.io/application-groups
 oc delete application.argoproj.io/management-policies
 oc delete application.argoproj.io/root
 
+oc delete policy/admin-cluster-role -n rhacm-policies
+oc delete policy/hub-resources -n rhacm-policies
+oc delete policy/ocm-placement-resources -n rhacm-policies
+oc delete policy/managed-cluster-resources -n rhacm-policies
+
 oc delete  application.argoproj.io/app-group-01  
 oc delete  application.argoproj.io/app-group-02
 oc delete  application.argoproj.io/app-group-03
+oc delete  application.argoproj.io/app-group-04
 
 oc delete applicationset/pacman-app-01-dev-01   
 oc delete applicationset/pacman-app-01-dev-02  
@@ -34,35 +33,65 @@ oc delete applicationset/pacman-app-09-dev-02
 oc delete applicationset/pacman-app-10-dev-01   
 oc delete applicationset/pacman-app-10-dev-02 
 oc delete applicationset/pacman-app-11-dev-01   
-oc delete applicationset/pacman-app-11-dev-02   
-oc delete applicationset/pacman-app-12-dev-01   
-oc delete applicationset/pacman-app-12-dev-02   
-
-
-oc delete application.argoproj.io/development-pacman-app-01-dev-01 -n pacman-app-01-dev-01
-oc delete application.argoproj.io/development-pacman-app-01-dev-02 -n pacman-app-01-dev-02 
-oc delete application.argoproj.io/development-pacman-app-02-dev-01 -n pacman-app-02-dev-01
-oc delete application.argoproj.io/development-pacman-app-02-dev-02 -n pacman-app-02-dev-02
-oc delete application.argoproj.io/development-pacman-app-03-dev-01 -n pacman-app-03-dev-01
-oc delete application.argoproj.io/development-pacman-app-03-dev-02 -n pacman-app-03-dev-02
-oc delete application.argoproj.io/development-pacman-app-04-dev-01 -n pacman-app-04-dev-01 
-oc delete application.argoproj.io/development-pacman-app-04-dev-02 -n pacman-app-04-dev-02
-oc delete application.argoproj.io/development-pacman-app-05-dev-01 -n pacman-app-05-dev-01 
-oc delete application.argoproj.io/development-pacman-app-05-dev-02 -n pacman-app-05-dev-02 
-oc delete application.argoproj.io/development-pacman-app-06-dev-01 -n pacman-app-06-dev-01  
-oc delete application.argoproj.io/development-pacman-app-06-dev-02 -n pacman-app-06-dev-02 
-oc delete application.argoproj.io/development-pacman-app-07-dev-01 -n pacman-app-07-dev-01  
-oc delete application.argoproj.io/development-pacman-app-07-dev-02 -n pacman-app-07-dev-02  
-oc delete application.argoproj.io/development-pacman-app-08-dev-01 -n pacman-app-08-dev-01  
-oc delete application.argoproj.io/development-pacman-app-08-dev-02 -n pacman-app-08-dev-02  
-oc delete application.argoproj.io/development-pacman-app-09-dev-01 -n pacman-app-09-dev-01   
-oc delete application.argoproj.io/development-pacman-app-09-dev-02 -n pacman-app-09-dev-02  
-oc delete application.argoproj.io/development-pacman-app-10-dev-01 -n pacman-app-10-dev-01   
-oc delete application.argoproj.io/development-pacman-app-10-dev-02 -n pacman-app-10-dev-02 
-oc delete application.argoproj.io/development-pacman-app-11-dev-01 -n pacman-app-11-dev-01   
-oc delete application.argoproj.io/development-pacman-app-11-dev-02 -n pacman-app-11-dev-02   
-oc delete application.argoproj.io/development-pacman-app-12-dev-01 -n pacman-app-12-dev-01   
-oc delete application.argoproj.io/development-pacman-app-12-dev-02 -n pacman-app-12-dev-02   
+oc delete applicationset/pacman-app-11-dev-02  
+oc delete applicationset/pacman-app-12-dev-01 
+oc delete applicationset/pacman-app-12-dev-02 
+oc delete applicationset/pacman-app-13-dev-01  
+oc delete applicationset/pacman-app-13-dev-02
+oc delete applicationset/pacman-app-14-dev-01 
+oc delete applicationset/pacman-app-14-dev-02
+oc delete applicationset/pacman-app-15-dev-01 
+oc delete applicationset/pacman-app-15-dev-02 
+oc delete applicationset/pacman-app-16-dev-01  
+oc delete applicationset/pacman-app-16-dev-02 
+oc delete applicationset/pacman-app-17-dev-01  
+oc delete applicationset/pacman-app-17-dev-02  
+oc delete applicationset/pacman-app-18-dev-01  
+oc delete applicationset/pacman-app-18-dev-02  
+oc delete applicationset/pacman-app-19-dev-01   
+oc delete applicationset/pacman-app-19-dev-02  
+oc delete applicationset/pacman-app-20-dev-01   
+oc delete applicationset/pacman-app-20-dev-02 
+oc delete applicationset/pacman-app-21-dev-01   
+oc delete applicationset/pacman-app-21-dev-02  
+oc delete applicationset/pacman-app-22-dev-01 
+oc delete applicationset/pacman-app-22-dev-02 
+oc delete applicationset/pacman-app-23-dev-01  
+oc delete applicationset/pacman-app-23-dev-02
+oc delete applicationset/pacman-app-24-dev-01 
+oc delete applicationset/pacman-app-24-dev-02
+oc delete applicationset/pacman-app-25-dev-01 
+oc delete applicationset/pacman-app-25-dev-02 
+oc delete applicationset/pacman-app-26-dev-01  
+oc delete applicationset/pacman-app-26-dev-02 
+oc delete applicationset/pacman-app-27-dev-01  
+oc delete applicationset/pacman-app-27-dev-02  
+oc delete applicationset/pacman-app-28-dev-01  
+oc delete applicationset/pacman-app-28-dev-02  
+oc delete applicationset/pacman-app-29-dev-01   
+oc delete applicationset/pacman-app-29-dev-02  
+oc delete applicationset/pacman-app-30-dev-01   
+oc delete applicationset/pacman-app-30-dev-02 
+oc delete applicationset/pacman-app-31-dev-01   
+oc delete applicationset/pacman-app-31-dev-02  
+oc delete applicationset/pacman-app-32-dev-01 
+oc delete applicationset/pacman-app-32-dev-02 
+oc delete applicationset/pacman-app-33-dev-01  
+oc delete applicationset/pacman-app-33-dev-02
+oc delete applicationset/pacman-app-34-dev-01 
+oc delete applicationset/pacman-app-34-dev-02
+oc delete applicationset/pacman-app-35-dev-01 
+oc delete applicationset/pacman-app-35-dev-02 
+oc delete applicationset/pacman-app-36-dev-01  
+oc delete applicationset/pacman-app-36-dev-02 
+oc delete applicationset/pacman-app-37-dev-01  
+oc delete applicationset/pacman-app-37-dev-02  
+oc delete applicationset/pacman-app-38-dev-01  
+oc delete applicationset/pacman-app-38-dev-02  
+oc delete applicationset/pacman-app-39-dev-01   
+oc delete applicationset/pacman-app-39-dev-02  
+oc delete applicationset/pacman-app-40-dev-01   
+oc delete applicationset/pacman-app-40-dev-02 
 
 oc delete policy/pacman-app-01-project
 oc delete policy/pacman-app-02-project
@@ -76,6 +105,35 @@ oc delete policy/pacman-app-09-project
 oc delete policy/pacman-app-10-project
 oc delete policy/pacman-app-11-project
 oc delete policy/pacman-app-12-project
+oc delete policy/pacman-app-13-project
+oc delete policy/pacman-app-14-project
+oc delete policy/pacman-app-15-project
+oc delete policy/pacman-app-16-project
+oc delete policy/pacman-app-17-project
+oc delete policy/pacman-app-18-project
+oc delete policy/pacman-app-19-project
+oc delete policy/pacman-app-20-project
+oc delete policy/pacman-app-21-project
+oc delete policy/pacman-app-22-project
+oc delete policy/pacman-app-23-project
+oc delete policy/pacman-app-24-project
+oc delete policy/pacman-app-25-project
+oc delete policy/pacman-app-26-project
+oc delete policy/pacman-app-27-project
+oc delete policy/pacman-app-28-project
+oc delete policy/pacman-app-29-project
+oc delete policy/pacman-app-30-project
+oc delete policy/pacman-app-31-project
+oc delete policy/pacman-app-32-project
+oc delete policy/pacman-app-33-project
+oc delete policy/pacman-app-34-project
+oc delete policy/pacman-app-35-project
+oc delete policy/pacman-app-36-project
+oc delete policy/pacman-app-37-project
+oc delete policy/pacman-app-38-project
+oc delete policy/pacman-app-39-project
+oc delete policy/pacman-app-40-project
+
 
 oc delete appproject/pacman-app-01
 oc delete appproject/pacman-app-02
@@ -89,6 +147,34 @@ oc delete appproject/pacman-app-09
 oc delete appproject/pacman-app-10
 oc delete appproject/pacman-app-11
 oc delete appproject/pacman-app-12
+oc delete appproject/pacman-app-13
+oc delete appproject/pacman-app-14
+oc delete appproject/pacman-app-15
+oc delete appproject/pacman-app-16
+oc delete appproject/pacman-app-17
+oc delete appproject/pacman-app-18
+oc delete appproject/pacman-app-19
+oc delete appproject/pacman-app-20
+oc delete appproject/pacman-app-21
+oc delete appproject/pacman-app-22
+oc delete appproject/pacman-app-23
+oc delete appproject/pacman-app-24
+oc delete appproject/pacman-app-25
+oc delete appproject/pacman-app-26
+oc delete appproject/pacman-app-27
+oc delete appproject/pacman-app-28
+oc delete appproject/pacman-app-29
+oc delete appproject/pacman-app-30
+oc delete appproject/pacman-app-31
+oc delete appproject/pacman-app-32
+oc delete appproject/pacman-app-33
+oc delete appproject/pacman-app-34
+oc delete appproject/pacman-app-35
+oc delete appproject/pacman-app-36
+oc delete appproject/pacman-app-37
+oc delete appproject/pacman-app-38
+oc delete appproject/pacman-app-39
+oc delete appproject/pacman-app-40
 oc delete appproject/root
 
 oc delete project/pacman-app-01-dev-01
@@ -111,11 +197,70 @@ oc delete project/pacman-app-09-dev-01
 oc delete project/pacman-app-09-dev-02
 oc delete project/pacman-app-10-dev-01
 oc delete project/pacman-app-10-dev-02
+
 oc delete project/pacman-app-11-dev-01
 oc delete project/pacman-app-11-dev-02
 oc delete project/pacman-app-12-dev-01
 oc delete project/pacman-app-12-dev-02
-oc delete project/root
+oc delete project/pacman-app-13-dev-01
+oc delete project/pacman-app-13-dev-02
+oc delete project/pacman-app-14-dev-01
+oc delete project/pacman-app-14-dev-02
+oc delete project/pacman-app-15-dev-01
+oc delete project/pacman-app-15-dev-02
+oc delete project/pacman-app-16-dev-01
+oc delete project/pacman-app-16-dev-02
+oc delete project/pacman-app-17-dev-01
+oc delete project/pacman-app-17-dev-02
+oc delete project/pacman-app-18-dev-01
+oc delete project/pacman-app-18-dev-02
+oc delete project/pacman-app-19-dev-01
+oc delete project/pacman-app-19-dev-02
+oc delete project/pacman-app-20-dev-01
+oc delete project/pacman-app-20-dev-02
+
+oc delete project/pacman-app-21-dev-01
+oc delete project/pacman-app-21-dev-02
+oc delete project/pacman-app-22-dev-01
+oc delete project/pacman-app-22-dev-02
+oc delete project/pacman-app-23-dev-01
+oc delete project/pacman-app-23-dev-02
+oc delete project/pacman-app-24-dev-01
+oc delete project/pacman-app-24-dev-02
+oc delete project/pacman-app-25-dev-01
+oc delete project/pacman-app-25-dev-02
+oc delete project/pacman-app-26-dev-01
+oc delete project/pacman-app-26-dev-02
+oc delete project/pacman-app-27-dev-01
+oc delete project/pacman-app-27-dev-02
+oc delete project/pacman-app-28-dev-01
+oc delete project/pacman-app-28-dev-02
+oc delete project/pacman-app-29-dev-01
+oc delete project/pacman-app-29-dev-02
+oc delete project/pacman-app-30-dev-01
+oc delete project/pacman-app-30-dev-02
+
+oc delete project/pacman-app-31-dev-01
+oc delete project/pacman-app-31-dev-02
+oc delete project/pacman-app-32-dev-01
+oc delete project/pacman-app-32-dev-02
+oc delete project/pacman-app-33-dev-01
+oc delete project/pacman-app-33-dev-02
+oc delete project/pacman-app-34-dev-01
+oc delete project/pacman-app-34-dev-02
+oc delete project/pacman-app-35-dev-01
+oc delete project/pacman-app-35-dev-02
+oc delete project/pacman-app-36-dev-01
+oc delete project/pacman-app-36-dev-02
+oc delete project/pacman-app-37-dev-01
+oc delete project/pacman-app-37-dev-02
+oc delete project/pacman-app-38-dev-01
+oc delete project/pacman-app-38-dev-02
+oc delete project/pacman-app-39-dev-01
+oc delete project/pacman-app-39-dev-02
+oc delete project/pacman-app-40-dev-01
+oc delete project/pacman-app-40-dev-02
+
 oc delete project/rhacm-policies
 
 
