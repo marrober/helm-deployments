@@ -1,3 +1,5 @@
+## hub cluster
+
 oc delete application.argoproj.io/application-groups
 oc delete application.argoproj.io/management-policies
 oc delete application.argoproj.io/root

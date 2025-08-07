@@ -19,7 +19,7 @@ spec:
           severity: medium
           remediationAction: enforce
           object-templates-raw: |   
-            {{- range $ns:= (lookup "v1" "Namespace" "" "" "argocdManaged=true").items }}    
+            {{- range $ns:= (lookup "v1" "Namespace" "" "" "argocdddddManaged=true").items }}    
             - complianceType: musthave 
               objectDefinition:
                 apiVersion: rbac.authorization.k8s.io/v1
@@ -56,19 +56,6 @@ kind: PlacementRule
 metadata:
   name: managed-cluster-resources-placement
   namespace: rhacm-policies
-spec:
-  clusterConditions:
-    - status: "True"
-      type: ManagedClusterConditionAvailable
-  clusterSelector:
-    matchExpressions:
-      - {key: local-cluster, operator: NotIn, values: ["true"]}
----
-apiVersion: apps.open-cluster-management.io/v1
-kind: PlacementRule
-metadata:
-  name: managed-cluster-resources-placement
-  namespace: openshift-gitops
 spec:
   clusterConditions:
     - status: "True"
