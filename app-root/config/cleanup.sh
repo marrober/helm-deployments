@@ -74,6 +74,8 @@ oc delete policy/pacman-app-07-project
 oc delete policy/pacman-app-08-project
 oc delete policy/pacman-app-09-project
 oc delete policy/pacman-app-10-project
+oc delete policy/pacman-app-11-project
+oc delete policy/pacman-app-12-project
 
 oc delete appproject/pacman-app-01
 oc delete appproject/pacman-app-02
