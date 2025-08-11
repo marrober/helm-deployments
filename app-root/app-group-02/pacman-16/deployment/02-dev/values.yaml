@@ -9,8 +9,6 @@ pacman:
   applicationFramework: nodejs
   applicationFrameworkVersion: 16-ubi8
 
-  clusterAPI: apps.cluster-llcbt.llcbt.sandbox1851.opentlc.com
-
   replicaCount: 2
 
   imageRepositoryName: quay.io/marrober/pacman
