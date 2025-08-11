@@ -26,7 +26,7 @@ spec:
                 kind: ClusterRole
                 apiVersion: rbac.authorization.k8s.io/v1
                 metadata:
-                  name: openshift-gitops-policy-admin-1
+                  name: openshift-gitops-policy-admin
                 rules:
                   - verbs:
                       - get
