@@ -16,7 +16,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: admin-cluster-role
+          name: admin-cluster-role-1
         spec:
           remediationAction: enforce
           severity: medium
@@ -26,7 +26,7 @@ spec:
                 kind: ClusterRole
                 apiVersion: rbac.authorization.k8s.io/v1
                 metadata:
-                  name: openshift-gitops-policy-admin
+                  name: openshift-gitops-policy-admin-1
                 rules:
                   - verbs:
                       - get
@@ -74,7 +74,7 @@ spec:
                 kind: ClusterRoleBinding
                 apiVersion: rbac.authorization.k8s.io/v1
                 metadata:
-                  name: openshift-gitops-policy-admin
+                  name: openshift-gitops-policy-admin-1
                 subjects:
                   - kind: ServiceAccount
                     name: openshift-gitops-argocd-application-controller
@@ -82,7 +82,77 @@ spec:
                 roleRef:
                   apiGroup: rbac.authorization.k8s.io
                   kind: ClusterRole
-                  name: openshift-gitops-policy-admin
+                  name: openshift-gitops-policy-admin-1
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: admin-cluster-role-2
+        spec:
+          remediationAction: enforce
+          severity: medium
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                kind: ClusterRole
+                apiVersion: rbac.authorization.k8s.io/v1
+                metadata:
+                  name: openshift-gitops-policy-admin-2
+                rules:
+                  - verbs:
+                      - get
+                      - list
+                      - watch
+                      - create
+                      - update
+                      - patch
+                      - delete
+                    apiGroups:
+                      - apps/v1
+                    resources:
+                      - deployment
+                  - verbs:
+                      - get
+                      - list
+                      - watch
+                      - create
+                      - update
+                      - patch
+                      - delete
+                    apiGroups:
+                      - v1
+                    resources:
+                      - pod
+                      - service
+                      - configmap
+                      - secret
+                  - verbs:
+                      - get
+                      - list
+                      - watch
+                      - create
+                      - update
+                      - patch
+                      - delete
+                    apiGroups:
+                      - route.openshift.io/v1
+                    resources:
+                      - route
+            - complianceType: musthave
+              objectDefinition:
+                kind: ClusterRoleBinding
+                apiVersion: rbac.authorization.k8s.io/v1
+                metadata:
+                  name: openshift-gitops-policy-admin-2
+                subjects:
+                  - kind: ServiceAccount
+                    name: openshift-gitops-argocd-application-controller
+                    namespace: openshift-gitops
+                roleRef:
+                  apiGroup: rbac.authorization.k8s.io
+                  kind: ClusterRole
+                  name: openshift-gitops-policy-admin-2
+
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
