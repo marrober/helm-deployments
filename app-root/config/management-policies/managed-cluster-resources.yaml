@@ -61,35 +61,13 @@ spec:
                       - patch
                       - delete
                     apiGroups:
-                      - apps/v1
+                      - '*'
                     resources:
                       - deployment
-                  - verbs:
-                      - get
-                      - list
-                      - watch
-                      - create
-                      - update
-                      - patch
-                      - delete
-                    apiGroups:
-                      - v1
-                    resources:
                       - pod
                       - service
                       - configmap
                       - secret
-                  - verbs:
-                      - get
-                      - list
-                      - watch
-                      - create
-                      - update
-                      - patch
-                      - delete
-                    apiGroups:
-                      - route.openshift.io/v1
-                    resources:
                       - route
             - complianceType: musthave
               objectDefinition:
