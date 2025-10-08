@@ -19,7 +19,7 @@ spec:
           severity: medium
           remediationAction: enforce
           object-templates-raw: |   
-            {{- range $ns:= (lookup "v1" "Namespace" "" "" "argocdddddManaged=true").items }}    
+            {{- range $ns:= (lookup "v1" "Namespace" "" "" "argocdManaged=true").items }}    
             - complianceType: musthave 
               objectDefinition:
                 apiVersion: rbac.authorization.k8s.io/v1
