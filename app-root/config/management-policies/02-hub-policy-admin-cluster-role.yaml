@@ -85,10 +85,11 @@ spec:
                   name: openshift-gitops-policy-admin
             - complianceType: musthave
               objectDefinition:
-                kind: ClusterRoleBinding
+                kind: RoleBinding
                 apiVersion: rbac.authorization.k8s.io/v1
                 metadata:
                   name: openshift-gitops--assc-policy-admin
+                  nanmespace: openshift-gitops
                 subjects:
                   - kind: ServiceAccount
                     name: openshift-gitops-argocd-applicationset-controller
