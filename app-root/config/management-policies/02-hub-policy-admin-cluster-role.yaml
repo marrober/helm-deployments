@@ -16,6 +16,64 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
+          name: admin-role-appset
+        spec:
+          remediationAction: enforce
+          severity: medium
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                kind: Role
+                apiVersion: rbac.authorization.k8s.io/v1
+                metadata:
+                  name: openshift-gitops-policy-admin-appset
+                  namespace: openshift-gitops
+                rules:
+                  - verbs:
+                      - get
+                      - list
+                      - watch
+                      - create
+                      - update
+                      - patch
+                      - delete
+                    apiGroups:
+                      - policy.open-cluster-management.io
+                    resources:
+                      - policies
+                      - policysets
+                      - placementbindings
+                  - verbs:
+                      - get
+                      - list
+                      - watch
+                      - create
+                      - update
+                      - patch
+                      - delete
+                    apiGroups:
+                      - apps.open-cluster-management.io
+                    resources:
+                      - placementrules
+                  - verbs:
+                      - get
+                      - list
+                      - watch
+                      - create
+                      - update
+                      - patch
+                      - delete
+                    apiGroups:
+                      - cluster.open-cluster-management.io
+                    resources:
+                      - placements
+                      - placements/status
+                      - placementdecisions
+                      - placementdecisions/status
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
           name: admin-cluster-role
         spec:
           remediationAction: enforce
@@ -96,8 +154,8 @@ spec:
                     namespace: openshift-gitops
                 roleRef:
                   apiGroup: rbac.authorization.k8s.io
-                  kind: ClusterRole
-                  name: openshift-gitops-policy-admin
+                  kind: Role
+                  name: openshift-gitops-policy-admin-appset
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
