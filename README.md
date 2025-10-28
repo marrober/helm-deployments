@@ -107,51 +107,148 @@ spec:
 
 # Sync the argocd apps on the managed clusters 
 
-argocd login <argocd server url without https://>
+## Login to ArgoCD command line 
+
+````bash
+argocd login $(oc get route/openshift-gitops-server  -n openshift-gitops -o jsonpath='{.spec.host}') --grpc-web --username admin --password $(oc get secret/openshift-gitops-cluster  -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d)
+````
 
 (Not actually needed as the apps will sync on an ArgoCD cycle)
 
-argocd app sync openshift-gitops/development-pacman-app-01-dev-01
-argocd app sync openshift-gitops/development-pacman-app-01-dev-02
-argocd app sync openshift-gitops/development-pacman-app-02-dev-01
-argocd app sync openshift-gitops/development-pacman-app-02-dev-02
-argocd app sync openshift-gitops/development-pacman-app-03-dev-01
-argocd app sync openshift-gitops/development-pacman-app-03-dev-02
-argocd app sync openshift-gitops/development-pacman-app-04-dev-01
-argocd app sync openshift-gitops/development-pacman-app-04-dev-02
-argocd app sync openshift-gitops/development-pacman-app-05-dev-01
-argocd app sync openshift-gitops/development-pacman-app-05-dev-02
-argocd app sync openshift-gitops/development-pacman-app-06-dev-01
-argocd app sync openshift-gitops/development-pacman-app-06-dev-02
-argocd app sync openshift-gitops/development-pacman-app-07-dev-01
-argocd app sync openshift-gitops/development-pacman-app-07-dev-02
-argocd app sync openshift-gitops/development-pacman-app-08-dev-01
-argocd app sync openshift-gitops/development-pacman-app-08-dev-02
-argocd app sync openshift-gitops/development-pacman-app-09-dev-01
-argocd app sync openshift-gitops/development-pacman-app-09-dev-02
-argocd app sync openshift-gitops/development-pacman-app-10-dev-01
-argocd app sync openshift-gitops/development-pacman-app-10-dev-02
+argocd app sync openshift-gitops/cluster-1-pacman-app-01-dev-01
+argocd app sync openshift-gitops/cluster-1-pacman-app-01-dev-02
+argocd app sync openshift-gitops/cluster-1-pacman-app-02-dev-01
+argocd app sync openshift-gitops/cluster-1-pacman-app-02-dev-02
+argocd app sync openshift-gitops/cluster-1-pacman-app-03-dev-01
+argocd app sync openshift-gitops/cluster-1-pacman-app-03-dev-02
+argocd app sync openshift-gitops/cluster-1-pacman-app-04-dev-01
+argocd app sync openshift-gitops/cluster-1-pacman-app-04-dev-02
+argocd app sync openshift-gitops/cluster-1-pacman-app-05-dev-01
+argocd app sync openshift-gitops/cluster-1-pacman-app-05-dev-02
+argocd app sync openshift-gitops/cluster-1-pacman-app-06-dev-01
+argocd app sync openshift-gitops/cluster-1-pacman-app-06-dev-02
+argocd app sync openshift-gitops/cluster-1-pacman-app-07-dev-01
+argocd app sync openshift-gitops/cluster-1-pacman-app-07-dev-02
+argocd app sync openshift-gitops/cluster-1-pacman-app-08-dev-01
+argocd app sync openshift-gitops/cluster-1-pacman-app-08-dev-02
+argocd app sync openshift-gitops/cluster-1-pacman-app-09-dev-01
+argocd app sync openshift-gitops/cluster-1-pacman-app-09-dev-02
+argocd app sync openshift-gitops/cluster-1-pacman-app-10-dev-01
+argocd app sync openshift-gitops/cluster-1-pacman-app-10-dev-02
 
+### Delete resources on the hub cluster
 
-delete -y all apps on remote cluster
+argocd appset delete -y openshift-gitops/pacman-app-01-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-01-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-02-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-02-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-03-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-03-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-04-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-04-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-05-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-05-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-06-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-06-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-07-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-07-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-08-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-08-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-09-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-09-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-10-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-10-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-11-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-11-dev-02
+argocd appset delete -y openshift-gitops/pacman-app-12-dev-01
+argocd appset delete -y openshift-gitops/pacman-app-12-dev-02
 
-argocd app delete -y openshift-gitops/development-pacman-app-01-dev-01
-argocd app delete -y openshift-gitops/development-pacman-app-01-dev-02
-argocd app delete -y openshift-gitops/development-pacman-app-02-dev-01
-argocd app delete -y openshift-gitops/development-pacman-app-02-dev-02
-argocd app delete -y openshift-gitops/development-pacman-app-03-dev-01
-argocd app delete -y openshift-gitops/development-pacman-app-03-dev-02
-argocd app delete -y openshift-gitops/development-pacman-app-04-dev-01
-argocd app delete -y openshift-gitops/development-pacman-app-04-dev-02
-argocd app delete -y openshift-gitops/development-pacman-app-05-dev-01
-argocd app delete -y openshift-gitops/development-pacman-app-05-dev-02
-argocd app delete -y openshift-gitops/development-pacman-app-06-dev-01
-argocd app delete -y openshift-gitops/development-pacman-app-06-dev-02
-argocd app delete -y openshift-gitops/development-pacman-app-07-dev-01
-argocd app delete -y openshift-gitops/development-pacman-app-07-dev-02
-argocd app delete -y openshift-gitops/development-pacman-app-08-dev-01
-argocd app delete -y openshift-gitops/development-pacman-app-08-dev-02
-argocd app delete -y openshift-gitops/development-pacman-app-09-dev-01
-argocd app delete -y openshift-gitops/development-pacman-app-09-dev-02
-argocd app delete -y openshift-gitops/development-pacman-app-10-dev-01
-argocd app delete -y openshift-gitops/development-pacman-app-10-dev-02
+argocd app delete -y openshift-gitops/application-groups
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-01-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-01-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-02-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-02-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-03-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-03-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-04-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-04-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-05-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-05-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-06-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-06-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-07-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-07-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-08-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-08-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-09-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-09-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-10-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-10-dev-02
+
+argocd proj delete pacman-app-01
+argocd proj delete pacman-app-02
+argocd proj delete pacman-app-03
+argocd proj delete pacman-app-04
+argocd proj delete pacman-app-05
+argocd proj delete pacman-app-06
+argocd proj delete pacman-app-07
+argocd proj delete pacman-app-08
+argocd proj delete pacman-app-09
+argocd proj delete pacman-app-10
+argocd proj delete root
+
+oc delete policy -n openshift-gitops pacman-app-01-project 
+oc delete policy -n openshift-gitops pacman-app-02-project
+oc delete policy -n openshift-gitops pacman-app-03-project
+oc delete policy -n openshift-gitops pacman-app-04-project
+oc delete policy -n openshift-gitops pacman-app-05-project
+oc delete policy -n openshift-gitops pacman-app-06-project
+oc delete policy -n openshift-gitops pacman-app-07-project
+oc delete policy -n openshift-gitops pacman-app-08-project
+oc delete policy -n openshift-gitops pacman-app-09-project
+oc delete policy -n openshift-gitops pacman-app-10-project 
+
+### Delete resources on the managed cluster
+
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-01-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-01-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-02-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-02-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-03-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-03-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-04-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-04-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-05-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-05-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-06-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-06-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-07-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-07-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-08-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-08-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-09-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-09-dev-02
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-10-dev-01
+argocd app delete -y openshift-gitops/cluster-1-pacman-app-10-dev-02
+
+oc patch application/cluster-1-pacman-app-01-dev-01 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-01-dev-02 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-02-dev-01 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-02-dev-02 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-03-dev-01 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-03-dev-02 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-04-dev-01 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-04-dev-02 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-05-dev-01 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-05-dev-02 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-06-dev-01 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-06-dev-02 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-07-dev-01 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-07-dev-02 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-08-dev-01 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-08-dev-02 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-09-dev-01 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-09-dev-02 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-10-dev-01 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+oc patch application/cluster-1-pacman-app-10-dev-02 -n openshift-gitops --patch '{"metadata":{"finalizers": null }}' --type=merge
+
