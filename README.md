@@ -14,6 +14,7 @@ Create a clusterset called 'dev-clusters' with all dev-clusters present.
 
 ## Get the ArgoCD credentials and address :
 
+Use the information below to view the ArgoCD web UI on both the hub and the managed clusters.
 ````bash
 oc get secret/openshift-gitops-cluster  -n openshift-gitops -o jsonpath='{.data.admin\.password}' | base64 -d 
 echo ""
