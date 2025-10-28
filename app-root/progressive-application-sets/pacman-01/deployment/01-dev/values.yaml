@@ -9,7 +9,7 @@ pacman:
   applicationFramework: nodejs
   applicationFrameworkVersion: 16-ubi8
 
-  replicaCount: 2
+  replicaCount: 4
 
   imageRepositoryName: quay.io/marrober/pacman
   imageRepositoryTag: g3a59
