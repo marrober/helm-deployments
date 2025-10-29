@@ -10,7 +10,7 @@ spec:
     namespace: argo-root
     server: https://kubernetes.default.svc
   source:
-    path: app-root/progressive-application-sets
+    path: app-root/progressive-application-sets/layer-01/env/
     repoURL: https://github.com/marrober/helm-deployments.git
     targetRevision: main
     directory: 
