@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: prog-pacman-app-01-dev-01
+  name: prog-layers-app-01-dev-01
   namespace: openshift-gitops
 spec:
   generators:
@@ -34,20 +34,16 @@ spec:
         argocd.argoproj.io/skip-reconcile: "true" 
       labels:
         apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
-      name: '{{name}}-prog-pacman-app-01-dev-01'
+      name: '{{name}}-prog-layers-app-01-dev-01'
     spec:
       destination:
-        namespace: prog-pacman-app-01-dev-01
+        namespace: prog-layers-app-01-dev-01
         server: '{{server}}'
-      project: prog-pacman-app-01
+      project: prog-layers-app-01
       source:
         repoURL: https://github.com/marrober/helm-deployments.git
-        path: app-root/progressive-application-sets/pacman-01/deployment/01-dev
+        path: app-root/progressive-application-sets/layers-01/deployment/01-dev
         targetRevision: main
-        helm:
-          releaseName: pacman-helm-dev
-          valueFiles:
-          - values.yaml
       syncPolicy:
         automated: {}
         syncOptions:
