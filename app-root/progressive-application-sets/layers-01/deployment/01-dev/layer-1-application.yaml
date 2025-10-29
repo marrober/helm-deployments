@@ -29,5 +29,5 @@ spec:
             - name: VERSION_ID
               value: v1
             - name: HEALTH_DELAY
-              value: '20'
+              value: '30'
           imagePullPolicy: Always
