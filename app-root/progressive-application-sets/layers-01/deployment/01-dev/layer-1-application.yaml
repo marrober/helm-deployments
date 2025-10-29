@@ -28,8 +28,6 @@ spec:
               value: layer-1
             - name: VERSION_ID
               value: v1
-            - name: NEXT_LAYER_NAME
-              value: layer-2
             - name: HEALTH_DELAY
               value: '20'
           imagePullPolicy: Always
