@@ -19,13 +19,13 @@ spec:
               operator: In
               values:
                 - cluster-1
-          maxUpdate: 50%
+          maxUpdate: 100%
         - matchExpressions:
             - key: name
               operator: In
               values:
                 - cluster-2
-          maxUpdate: 50%  
+          maxUpdate: 100%
   template:
     metadata:
       annotations:
