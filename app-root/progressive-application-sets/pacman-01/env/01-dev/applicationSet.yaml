@@ -10,6 +10,22 @@ spec:
         labelSelector:
           matchLabels:
             cluster.open-cluster-management.io/placement: dev-clusters
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+        - matchExpressions:
+            - key: name
+              operator: In
+              values:
+                - cluster-1
+          maxUpdate: 50%
+        - matchExpressions:
+            - key: name
+              operator: In
+              values:
+                - cluster-2
+          maxUpdate: 50%  
   template:
     metadata:
       annotations:
