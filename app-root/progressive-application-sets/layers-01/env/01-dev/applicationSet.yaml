@@ -36,6 +36,7 @@ spec:
         argocd.argoproj.io/skip-reconcile: "true" 
       labels:
         apps.open-cluster-management.io/pull-to-ocm-managed-cluster: "true" 
+        new-label: "new"
       name: '{{name}}-prog-layers-app-01-dev-01'
     spec:
       destination:
