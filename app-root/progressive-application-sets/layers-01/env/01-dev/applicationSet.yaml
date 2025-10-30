@@ -27,7 +27,7 @@ spec:
                 - cluster-2
           maxUpdate: 100%
   syncPolicy:
-    applicationsSync: "true"
+    applicationsSync: "create-update"
   template:
     metadata:
       annotations:
