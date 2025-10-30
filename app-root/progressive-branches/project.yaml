@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: progressive-pacman
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  namespace: openshift-gitops
+spec:
+  sourceRepos:
+  - https://github.com/marrober/helm-deployments.git
+  - https://marrober.github.io/helm-charts/
+
+  destinations:
+  - server: https://kubernetes.default.svc
+    namespace: '*'
+  - server: https://api.cluster-1.sandbox2406.opentlc.com:6443
+    namespace: '*'
+
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRole
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRoleBinding
+
+  namespaceResourceBlacklist:
+  namespaceResourceWhitelist:
+  orphanedResources:
+    warn: false
+  roles:

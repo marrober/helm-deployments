@@ -8,7 +8,7 @@ spec:
   project: progressive-pacman
   destination:
     namespace: openshift-gitops
-    server: https://api.cluster-1.sandbox2406.opentlc.com:6443
+    server: https://api.cluster-2.sandbox2406.opentlc.com:6443
   ignoreDifferences:
     - group: argoproj.io
       jsonPointers:
