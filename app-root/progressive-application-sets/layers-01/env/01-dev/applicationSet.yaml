@@ -26,6 +26,8 @@ spec:
               values:
                 - cluster-2
           maxUpdate: 100%
+  syncPolicy:
+    applicationsSync: true
   template:
     metadata:
       annotations:
