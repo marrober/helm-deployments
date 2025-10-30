@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: null
+  name: pacman-dev-01
+  namespace: openshift-gitops
+spec:
+  project: progressive-pacman
+  destination:
+    namespace: openshift-gitops
+    server: https://api.cluster-1.sandbox2406.opentlc.com:6443
+  ignoreDifferences:
+    - group: argoproj.io
+      jsonPointers:
+        - /status
+      kind: Application
+    - group: triggers.tekton.dev
+      jsonPointers:
+        - /status
+      kind: EventListener
+    - group: triggers.tekton.dev
+      jsonPointers:
+        - /status
+      kind: TriggerTemplate
+    - group: triggers.tekton.dev
+      jsonPointers:
+        - /status
+      kind: TriggerBinding
+    - group: route.openshift.io
+      jsonPointers:
+        - /spec/host
+      kind: Route
+  source:
+    path: app-root/progressive-branches/
+    targetRevision: main
+    repoURL: https://github.com/marrober/helm-deployments.git
+  syncPolicy:
+    automated: 
+      prune: true 
+      selfHeal: true 
+      allowEmpty: false 
+      - Validate=true 
+      - CreateNamespace=false 
+      - PrunePropagationPolicy=foreground 
+      - PruneLast=true 
+    retry:
+      limit: 1 
+      backoff:
+        duration: 5s 
+        factor: 2 
+        maxDuration: 20s 
