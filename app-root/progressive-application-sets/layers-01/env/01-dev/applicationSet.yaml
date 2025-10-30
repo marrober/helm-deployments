@@ -44,8 +44,6 @@ spec:
         repoURL: https://github.com/marrober/helm-deployments.git
         path: app-root/progressive-application-sets/layers-01/deployment/01-dev
         targetRevision: main
-        directory: 
-          recurse: true
       syncPolicy:
         automated: {}
         syncOptions:
