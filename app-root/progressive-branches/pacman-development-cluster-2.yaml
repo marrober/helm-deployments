@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   creationTimestamp: null
-  name: progressive-pacman-01
+  name: progressive-pacman-02
   namespace: openshift-gitops
 spec:
   project: progressive-pacman
@@ -32,7 +32,7 @@ spec:
       kind: Route
   source:
     path: app-root/progressive-branches/deployment/
-    targetRevision: main
+    targetRevision: release_c2
     repoURL: https://github.com/marrober/helm-deployments.git
   syncPolicy:
     automated: 
