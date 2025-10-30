@@ -2,7 +2,7 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: pacman-route
-  namespace: pacman-development
+  namespace: prog-layers-app-01-dev-01
 spec:
   path: /
   to:

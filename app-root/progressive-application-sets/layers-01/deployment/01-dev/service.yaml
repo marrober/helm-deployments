@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: pacman
-  namespace: pacman-development
+  namespace: prog-layers-app-01-dev-01
   labels:
     app.kubernetes.io/instance: pacman-dev
     app.kubernetes.io/name: pacman
