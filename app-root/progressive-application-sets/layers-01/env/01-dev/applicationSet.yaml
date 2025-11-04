@@ -3,6 +3,8 @@ kind: ApplicationSet
 metadata:
   name: prog-layers-app-01-dev-01
   namespace: openshift-gitops
+  annotations:
+    targetCluster: dev-clusters
 spec:
   generators:
     - clusterDecisionResource:
@@ -49,6 +51,8 @@ spec:
         targetRevision: main
       syncPolicy:
         automated: {}
+        syncOptions:
+        - CreateNamespace=true
         retry:
           limit: 5 
           backoff:
