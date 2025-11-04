@@ -3,6 +3,8 @@ kind: ApplicationSet
 metadata:
   name: pacman-app-01-dev-01
   namespace: openshift-gitops
+  annotations:
+    targetCluster: dev-clusters
 spec:
   generators:
     - clusterDecisionResource:
