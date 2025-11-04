@@ -69,6 +69,7 @@ spec:
                       - configmap
                       - secret
                       - route
+                      - namespaces
             - complianceType: musthave
               objectDefinition:
                 kind: ClusterRoleBinding
