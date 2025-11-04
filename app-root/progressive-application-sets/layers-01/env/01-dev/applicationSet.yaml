@@ -7,11 +7,14 @@ metadata:
     targetCluster: dev-clusters
 spec:
   generators:
-    - clusterDecisionResource:
-        configMapRef: ocm-placement-generator
-        labelSelector:
-          matchLabels:
-            cluster.open-cluster-management.io/placement: dev-clusters
+    - list:
+        elements:
+          - cluster: cluster-1
+            server: https://api.cluster-1.sandbox1593.opentlc.com:6443
+            name: cluster-1
+          - cluster: cluster-2
+            server: https://api.cluster-2.sandbox1593.opentlc.com:6443
+            name: cluster-2
   strategy:
     type: RollingSync
     rollingSync:
