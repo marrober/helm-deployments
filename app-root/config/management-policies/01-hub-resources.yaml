@@ -90,24 +90,6 @@ spec:
                   name: openshift-gitops-argocd-application-controller
                   namespace: openshift-gitops                                                      
     - objectDefinition:
-#        apiVersion: policy.open-cluster-management.io/v1
-#        kind: ConfigurationPolicy
-#        metadata:
-#          name: hub-resources-2
-#        spec:
-#          severity: medium
-#          remediationAction: enforce      
-#          object-templates-raw: |   
-#            {{- range $ns:= (lookup "v1" "Namespace" "" "" "applicationSetHubNamespace=true").items }}            
-#            - complianceType: musthave 
-#              objectDefinition:
-#                apiVersion: cluster.open-cluster-management.io/v1beta2
-#                kind: ManagedClusterSetBinding
-#                metadata:
-#                  name: {{ $ns.metadata.annotations.targetClusterSet }}
-#                  namespace: {{ $ns.metadata.name }}
-#                spec:
-#                  clusterSet: {{ $ns.metadata.annotations.targetClusterSet }} 
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
@@ -117,23 +99,6 @@ spec:
           remediationAction: enforce      
           object-templates-raw: |   
             {{- range $as:= (lookup "argoproj.io/v1alpha1" "ApplicationSet" "" "" "").items }} 
-            - complianceType: musthave 
-              objectDefinition:
-                apiVersion: v1
-                kind: Namespace
-                metadata:
-                  name: {{ $as.spec.template.spec.project }}
-                  annotations:
-                    argocd.argoproj.io/sync-wave: "1"     
-            - complianceType: musthave 
-              objectDefinition:
-                apiVersion: cluster.open-cluster-management.io/v1beta2
-                kind: ManagedClusterSetBinding
-                metadata:
-                  name: {{ $as.metadata.annotations.targetCluster }}
-                  namespace: {{ $as.spec.template.spec.project }}
-                spec:
-                  clusterSet: {{ $as.metadata.annotations.targetCluster }}   
             - complianceType: musthave 
               objectDefinition:
                 apiVersion: argoproj.io/v1alpha1
@@ -155,7 +120,24 @@ spec:
                   - group: 'rbac.authorization.k8s.io'
                     kind: ClusterRole
                   - group: 'rbac.authorization.k8s.io'
-                    kind: ClusterRoleBinding    
+                    kind: ClusterRoleBinding             
+#            - complianceType: musthave 
+#              objectDefinition:
+#                apiVersion: v1
+#                kind: Namespace
+#                metadata:
+#                  name: {{ $as.spec.template.spec.project }}
+#                  annotations:
+#                    argocd.argoproj.io/sync-wave: "1"     
+#            - complianceType: musthave 
+#              objectDefinition:
+#                apiVersion: cluster.open-cluster-management.io/v1beta2
+#                kind: ManagedClusterSetBinding
+#                metadata:
+#                  name: {{ $as.metadata.annotations.targetCluster }}
+#                  namespace: {{ $as.spec.template.spec.project }}
+#                spec:
+#                  clusterSet: {{ $as.metadata.annotations.targetCluster }}      
             {{- end }}
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1

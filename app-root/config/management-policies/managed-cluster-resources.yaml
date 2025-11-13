@@ -36,54 +36,54 @@ spec:
                   name: openshift-gitops-argocd-application-controller
                   namespace: openshift-gitops
             {{- end }}
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy
-        metadata:
-          name: managed-cluster-resources-2
-        spec:
-          remediationAction: enforce
-          severity: medium
-          object-templates:
-            - complianceType: musthave
-              objectDefinition:
-                kind: ClusterRole
-                apiVersion: rbac.authorization.k8s.io/v1
-                metadata:
-                  name: managed-cluster-resources-2
-                rules:
-                  - verbs:
-                      - get
-                      - list
-                      - watch
-                      - create
-                      - update
-                      - patch
-                      - delete
-                    apiGroups:
-                      - '*'
-                    resources:
-                      - deployment
-                      - pod
-                      - service
-                      - configmap
-                      - secret
-                      - route
-                      - namespaces
-            - complianceType: musthave
-              objectDefinition:
-                kind: ClusterRoleBinding
-                apiVersion: rbac.authorization.k8s.io/v1
-                metadata:
-                  name: managed-cluster-resources-2
-                subjects:
-                  - kind: ServiceAccount
-                    name: openshift-gitops-argocd-application-controller
-                    namespace: openshift-gitops
-                roleRef:
-                  apiGroup: rbac.authorization.k8s.io
-                  kind: ClusterRole
-                  name: managed-cluster-resources-2
+#    - objectDefinition:
+#        apiVersion: policy.open-cluster-management.io/v1
+#        kind: ConfigurationPolicy
+#        metadata:
+#          name: managed-cluster-resources-2
+#        spec:
+#          remediationAction: enforce
+#          severity: medium
+#          object-templates:
+#            - complianceType: musthave
+#              objectDefinition:
+#                kind: ClusterRole
+#                apiVersion: rbac.authorization.k8s.io/v1
+#                metadata:
+#                  name: managed-cluster-resources-2
+#                rules:
+#                  - verbs:
+#                      - get
+#                      - list
+#                      - watch
+#                      - create
+#                      - update
+#                      - patch
+#                      - delete
+#                    apiGroups:
+#                      - '*'
+#                    resources:
+#                      - deployment
+#                      - pod
+#                      - service
+#                      - configmap
+#                      - secret
+#                      - route
+#                      - namespaces
+#            - complianceType: musthave
+#              objectDefinition:
+#                kind: ClusterRoleBinding
+#                apiVersion: rbac.authorization.k8s.io/v1
+#                metadata:
+#                  name: managed-cluster-resources-2
+#                subjects:
+#                  - kind: ServiceAccount
+#                    name: openshift-gitops-argocd-application-controller
+#                    namespace: openshift-gitops
+#                roleRef:
+#                  apiGroup: rbac.authorization.k8s.io
+#                  kind: ClusterRole
+#                  name: managed-cluster-resources-2
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
