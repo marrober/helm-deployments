@@ -23,11 +23,10 @@ spec:
           object-templates:
             - complianceType: musthave
               objectDefinition:
-                kind: Role
+                kind: ClusterRole
                 apiVersion: rbac.authorization.k8s.io/v1
                 metadata:
                   name: openshift-gitops-policy-admin-appset
-                  namespace: openshift-gitops
                 rules:
                   - verbs:
                       - get
@@ -143,10 +142,10 @@ spec:
                   name: openshift-gitops-policy-admin
             - complianceType: musthave
               objectDefinition:
-                kind: RoleBinding
+                kind: ClusterRoleBinding
                 apiVersion: rbac.authorization.k8s.io/v1
                 metadata:
-                  name: openshift-gitops-assc-policy-admin
+                  name: openshift-gitops-asc-policy-admin
                   namespace: openshift-gitops
                 subjects:
                   - kind: ServiceAccount
@@ -154,7 +153,7 @@ spec:
                     namespace: openshift-gitops
                 roleRef:
                   apiGroup: rbac.authorization.k8s.io
-                  kind: Role
+                  kind: ClusterRole
                   name: openshift-gitops-policy-admin-appset
 ---
 apiVersion: policy.open-cluster-management.io/v1
