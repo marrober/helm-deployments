@@ -120,7 +120,8 @@ spec:
                   - group: 'rbac.authorization.k8s.io'
                     kind: ClusterRole
                   - group: 'rbac.authorization.k8s.io'
-                    kind: ClusterRoleBinding             
+                    kind: ClusterRoleBinding     
+            {{- end }}        
 #            - complianceType: musthave 
 #              objectDefinition:
 #                apiVersion: v1
@@ -138,7 +139,7 @@ spec:
 #                  namespace: {{ $as.spec.template.spec.project }}
 #                spec:
 #                  clusterSet: {{ $as.metadata.annotations.targetCluster }}      
-            {{- end }}
+
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
